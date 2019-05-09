@@ -3,9 +3,6 @@
   "private": true,
   "version": "0.0.1",
   "main": "index.js",
-  "scripts": {
-    "develop": "gatsby develop"
-  },
   "peerDependencies": {
     "algoliasearch": "^3.32.1",
     "babel-plugin-styled-components": "^1.10.0",
