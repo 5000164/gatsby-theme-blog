@@ -9,7 +9,7 @@ const Header = ({ data }) => (
     <StyledTitleLink to="/">{data.site.siteMetadata.title}</StyledTitleLink>
     <Subtitle>My writing is my life.</Subtitle>
     <About>
-      <AboutItem><StyledA href="https://github.com/5000164/profile">About me</StyledA></AboutItem>
+      <AboutItem><StyledA href={data.site.siteMetadata.profileUrl}>About me</StyledA></AboutItem>
       <AboutItem><StyledA href="https://github.com/5000164">GitHub</StyledA></AboutItem>
       <AboutItem><StyledA href="https://twitter.com/5000164">Twitter</StyledA></AboutItem>
     </About>
@@ -83,6 +83,7 @@ export default props => (
         site {
           siteMetadata {
             title
+            profileUrl
           }
         }
       }
