@@ -18,7 +18,7 @@ export default class BlogList extends React.Component {
           slug={"/"}
           article={false}
         />
-        {posts.map(({ node }) => <Article key={node.fields.slug} slug={node.fields.slug} title={node.frontmatter.title} date={node.frontmatter.date} content={node.html}/>)}
+        {posts.map(({ node }) => <Article key={node.fields.slug} slug={node.fields.slug} title={node.frontmatter.title} date={node.frontmatter.date} content=""/>)}
         <Pagination>
           {Array.from({ length: numPages }, (_, i) => {
             if (currentPage === i + 1) {
