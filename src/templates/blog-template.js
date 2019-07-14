@@ -19,7 +19,7 @@ export default class Blog extends React.Component {
           slug={markdownRemark.fields.slug}
           article={true}
         />
-        <Article slug={markdownRemark.fields.slug} title={frontmatter.title} date={frontmatter.date} content={html}/>
+        <Article slug={markdownRemark.fields.slug} title={frontmatter.title} date={frontmatter.date} content={html} />
         <StyledUl>
           <PreviousLi>
             {previous && (
@@ -80,11 +80,7 @@ export const query = graphql`
         date
       }
       html
-      excerpt(
-        format: PLAIN
-        pruneLength: 300
-        truncate: true
-      )
+      excerpt(format: PLAIN, pruneLength: 300, truncate: true)
     }
   }
 `

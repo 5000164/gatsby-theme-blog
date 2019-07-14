@@ -7,11 +7,11 @@ const PostHit = clickHandler => ({ hit }) => (
   <Article>
     <Title>
       <Link to={hit.slug} onClick={clickHandler}>
-        <Highlight attribute="title" hit={hit} tagName="mark"/>
+        <Highlight attribute="title" hit={hit} tagName="mark" />
       </Link>
     </Title>
     <Content>
-      <Snippet attribute="excerpt" hit={hit} tagName="mark"/>
+      <Snippet attribute="excerpt" hit={hit} tagName="mark" />
     </Content>
   </Article>
 )

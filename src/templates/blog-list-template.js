@@ -18,13 +18,29 @@ export default class BlogList extends React.Component {
           slug={"/"}
           article={false}
         />
-        {posts.map(({ node }) => <Article key={node.fields.slug} slug={node.fields.slug} title={node.frontmatter.title} date={node.frontmatter.date} content=""/>)}
+        {posts.map(({ node }) => (
+          <Article
+            key={node.fields.slug}
+            slug={node.fields.slug}
+            title={node.frontmatter.title}
+            date={node.frontmatter.date}
+            content=""
+          />
+        ))}
         <Pagination>
           {Array.from({ length: numPages }, (_, i) => {
             if (currentPage === i + 1) {
-              return <Page key={`pagination-number${i + 1}`}><span>{i + 1}</span></Page>
+              return (
+                <Page key={`pagination-number${i + 1}`}>
+                  <span>{i + 1}</span>
+                </Page>
+              )
             } else {
-              return <Page key={`pagination-number${i + 1}`}><Link to={`/${i === 0 ? "" : i + 1}`}>{i + 1}</Link></Page>
+              return (
+                <Page key={`pagination-number${i + 1}`}>
+                  <Link to={`/${i === 0 ? "" : i + 1}`}>{i + 1}</Link>
+                </Page>
+              )
             }
           })}
         </Pagination>
@@ -58,11 +74,7 @@ export const query = graphql`
         description
       }
     }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
       edges {
         node {
           fields {

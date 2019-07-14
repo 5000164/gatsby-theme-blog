@@ -8,17 +8,13 @@ import PostHit from "./PostHit"
 
 const events = ["mousedown", "touchstart"]
 
-const Results = connectStateResults(
-  ({ searchState: state, searchResults: res, children }) =>
-    res && res.nbHits ? children : `No results for ${state.query}`,
+const Results = connectStateResults(({ searchState: state, searchResults: res, children }) =>
+  res && res.nbHits ? children : `No results for ${state.query}`
 )
 
 export default class Search extends Component {
   state = { query: "", focused: false, ref: createRef() }
-  searchClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY,
-  )
+  searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 
   updateState = state => this.setState(state)
 
@@ -37,15 +33,11 @@ export default class Search extends Component {
   }
 
   componentDidMount() {
-    events.forEach(event =>
-      document.addEventListener(event, this.handleClickOutside),
-    )
+    events.forEach(event => document.addEventListener(event, this.handleClickOutside))
   }
 
   componentWillUnmount() {
-    events.forEach(event =>
-      document.removeEventListener(event, this.handleClickOutside),
-    )
+    events.forEach(event => document.removeEventListener(event, this.handleClickOutside))
   }
 
   render() {
@@ -63,10 +55,16 @@ export default class Search extends Component {
         <HitsWrapper show={query.length > 0 && focused}>
           <Index key={index} indexName={index}>
             <Results>
-              <Hits hitComponent={PostHit(this.disableHits)}/>
+              <Hits hitComponent={PostHit(this.disableHits)} />
             </Results>
           </Index>
-          <By>Powered by<a href="https://www.algolia.com"><StyledAlgolia/>Algolia</a></By>
+          <By>
+            Powered by
+            <a href="https://www.algolia.com">
+              <StyledAlgolia />
+              Algolia
+            </a>
+          </By>
         </HitsWrapper>
       </InstantSearch>
     )
@@ -82,20 +80,21 @@ const HitsWrapper = styled.div`
   top: calc(100% + 0.5em);
   left: -200px;
   right: 0;
-  visibility: ${props => props.show ? "visible" : "hidden"};
-  opacity: ${props => props.show ? "1" : "0"};
+  visibility: ${props => (props.show ? "visible" : "hidden")};
+  opacity: ${props => (props.show ? "1" : "0")};
   width: 600px;
   max-height: 500px;
   margin: 0 auto;
   background-color: hsl(0, 100%, 100%);
   border-radius: 3px;
   border: 1px solid hsl(0, 0%, 95%);
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  transition: ${props => (props.show ?
-  "visibility 0s ease-out 0s, opacity .25s ease-out 0s" :
-  "visibility 0s ease-out .25s, opacity .25s ease-out 0s")};
+  transition: ${props =>
+    props.show
+      ? "visibility 0s ease-out 0s, opacity .25s ease-out 0s"
+      : "visibility 0s ease-out .25s, opacity .25s ease-out 0s"};
   @media (max-width: 800px) {
     width: 95%;
   }
@@ -116,7 +115,7 @@ const hits = css`
 `
 
 const By = styled.div`
-  font-size: .8em;
+  font-size: 0.8em;
   text-align: right;
 `
 

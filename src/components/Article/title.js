@@ -5,11 +5,16 @@ import moment from "moment"
 
 const Title = ({ data, slug, title, date }) => {
   const historyLink = data.site.siteMetadata.repository + "/commits/master/src/posts" + slug.slice(0, -1) + ".md"
-  const formattedDate = moment(date, "YYYY-MM-DD HH:mm:ss Z").local().format("MMMM Do, YYYY")
+  const formattedDate = moment(date, "YYYY-MM-DD HH:mm:ss Z")
+    .local()
+    .format("MMMM Do, YYYY")
   return (
     <>
       <StyledTitle to={slug}>{title}</StyledTitle>
-      <Meta><a href={historyLink}>Published {formattedDate}</a> by <a href={data.site.siteMetadata.profileUrl}>Hiroshi Sugawara</a></Meta>
+      <Meta>
+        <a href={historyLink}>Published {formattedDate}</a> by{" "}
+        <a href={data.site.siteMetadata.profileUrl}>Hiroshi Sugawara</a>
+      </Meta>
     </>
   )
 }
@@ -46,8 +51,7 @@ export default props => (
           }
         }
       }
-`}
+    `}
     render={data => <Title data={data} {...props} />}
   />
 )
-

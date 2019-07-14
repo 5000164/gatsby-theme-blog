@@ -4,8 +4,8 @@ import React from "react"
 
 const Article = ({ slug, title, date, content }) => (
   <>
-    <Title slug={slug} title={title} date={date}/>
-    <StyledArticle dangerouslySetInnerHTML={{ __html: content }}/>
+    <Title slug={slug} title={title} date={date} />
+    <StyledArticle dangerouslySetInnerHTML={{ __html: content }} />
   </>
 )
 
@@ -43,7 +43,7 @@ const StyledArticle = styled.article`
     width: 800px;
     margin: 60px auto 20px;
     padding: 0;
-    font-size: 2.0rem;
+    font-size: 2rem;
     font-weight: bold;
   }
   @media (max-width: 800px) {
@@ -54,18 +54,21 @@ const StyledArticle = styled.article`
   h1 + h2 {
     margin-top: 20px;
   }
-  ul, ol {
+  ul,
+  ol {
     width: 780px;
     margin: auto;
     padding-left: 20px;
   }
   @media (max-width: 800px) {
-    ul, ol {
+    ul,
+    ol {
       width: 90%;
       padding-left: 5%;
     }
   }
-  ul p, ol p {
+  ul p,
+  ol p {
     margin-top: 0;
     margin-bottom: 0;
   }

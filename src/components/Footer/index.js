@@ -8,7 +8,9 @@ const Footer = ({ data }) => (
   <StyledFooter>
     <div>
       <Link to="/">{data.site.siteMetadata.title}</Link>
-      <a href={data.site.siteMetadata.siteUrl + "/feed.xml"}><StyledRss/></a>
+      <a href={data.site.siteMetadata.siteUrl + "/feed.xml"}>
+        <StyledRss />
+      </a>
     </div>
     <div>Copyright © 2019 Hiroshi Sugawara. All rights reserved.</div>
   </StyledFooter>
@@ -40,7 +42,7 @@ export default props => (
           }
         }
       }
-`}
+    `}
     render={data => <Footer data={data} {...props} />}
   />
 )

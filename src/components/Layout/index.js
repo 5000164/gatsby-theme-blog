@@ -46,10 +46,10 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ children }) => {
   return (
     <>
-      <GlobalStyle/>
-      <Header/>
+      <GlobalStyle />
+      <Header />
       {children}
-      <Footer/>
+      <Footer />
     </>
   )
 }
