@@ -29,7 +29,7 @@ const StyledArticle = styled.article`
   h1 {
     width: 800px;
     margin: 60px auto 20px;
-    padding: 0 0 20px 0;
+    padding: 0 0 15px 0;
     font-size: 2.4rem;
     font-weight: bold;
     border-bottom: 1px solid hsl(235, 10%, 30%);
