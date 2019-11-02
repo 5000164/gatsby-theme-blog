@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react"
+import React, { Component } from "react"
 import algoliasearch from "algoliasearch/lite"
 import { connectStateResults, Hits, Index, InstantSearch } from "react-instantsearch-dom"
 import styled, { css } from "styled-components"
@@ -6,42 +6,16 @@ import { Algolia } from "styled-icons/fa-brands/Algolia"
 import Input from "./Input"
 import PostHit from "./PostHit"
 
-const events = ["mousedown", "touchstart"]
-
 const Results = connectStateResults(({ searchState: state, searchResults: res, children }) =>
   res && res.nbHits ? children : `No results for ${state.query}`
 )
 
 export default class Search extends Component {
-  state = { query: "", focused: false, ref: createRef() }
+  query = ""
   searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 
-  updateState = state => this.setState(state)
-
-  focus = () => {
-    this.setState({ focused: true })
-  }
-
-  disableHits = () => {
-    this.setState({ focused: false })
-  }
-
-  handleClickOutside = event => {
-    if (!this.state.ref.current.contains(event.target)) {
-      this.setState({ focused: false })
-    }
-  }
-
-  componentDidMount() {
-    events.forEach(event => document.addEventListener(event, this.handleClickOutside))
-  }
-
-  componentWillUnmount() {
-    events.forEach(event => document.removeEventListener(event, this.handleClickOutside))
-  }
-
   render() {
-    const { query, focused, ref } = this.state
+    const query = this.query
     const index = "Posts"
 
     return (
@@ -49,10 +23,10 @@ export default class Search extends Component {
         searchClient={this.searchClient}
         indexName={index}
         onSearchStateChange={this.updateState}
-        root={{ Root, props: { ref } }}
+        root={{ Root }}
       >
-        <Input onFocus={this.focus} {...{ focused }} />
-        <HitsWrapper show={query.length > 0 && focused}>
+        <Input />
+        <HitsWrapper show={query.length > 0}>
           <Index key={index} indexName={index}>
             <Results>
               <Hits hitComponent={PostHit(this.disableHits)} />

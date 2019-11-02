@@ -6,11 +6,7 @@ import { Search } from "styled-icons/fa-solid"
 export default connectSearchBox(({ refine, ...rest }) => (
   <Form onSubmit={e => e.preventDefault()}>
     <SearchIcon {...rest} />
-    <Input
-      type="text"
-      onChange={e => refine(e.target.value)}
-      {...rest}
-    />
+    <Input type="text" onChange={e => refine(e.target.value)} {...rest} />
   </Form>
 ))
 
@@ -20,16 +16,12 @@ const Form = styled.form`
 
 const SearchIcon = styled(Search)`
   width: 2em;
-  padding: 0 .5em;
-  ${props => props.focused ? focusedIcon : blurredIcon}
+  padding: 0 0.5em;
+  ${() => blurredIcon}
 `
 
 const blurredIcon = css`
   color: hsl(235, 10%, 40%);
-`
-
-const focusedIcon = css`
-  color: hsl(235, 10%, 80%);
 `
 
 const Input = styled.input`
@@ -39,19 +31,12 @@ const Input = styled.input`
   padding-left: 2em;
   outline: none;
   border: none;
-  transition: width .25s ease-out 0s;
-  ${props => props.focused ? focusedText : blurredText}
+  transition: width 0.25s ease-out 0s;
+  ${() => blurredText}
 `
 
 const blurredText = css`
   width: 150px;
   color: hsl(235, 10%, 40%);
   border-bottom: 1px solid hsl(235, 10%, 40%);
-`
-
-const focusedText = css`
-  width: 200px;
-  color: hsl(235, 10%, 80%);
-  border-bottom: 1px solid hsl(235, 10%, 80%);
-  cursor: text;
 `
