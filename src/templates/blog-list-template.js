@@ -50,13 +50,13 @@ export default class BlogList extends React.Component {
 }
 
 const Pagination = styled.ul`
-  width: 800px;
+  width: 720px;
   list-style: none;
   margin: 120px auto;
   padding: 0;
   text-align: center;
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
     overflow-x: scroll;
   }
 `

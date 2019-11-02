@@ -70,7 +70,7 @@ const HitsWrapper = styled.div`
       ? "visibility 0s ease-out 0s, opacity .25s ease-out 0s"
       : "visibility 0s ease-out .25s, opacity .25s ease-out 0s"};
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
   ${() => hits}
 `
@@ -83,7 +83,7 @@ const hits = css`
   }
   @media (max-width: 800px) {
     ul {
-      width: 95%;
+      width: 75%;
     }
   }
 `

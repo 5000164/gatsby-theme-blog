@@ -24,17 +24,11 @@ const Article = styled.div`
 const Title = styled.div`
   width: 580px;
   margin: 4px auto;
-  @media (max-width: 800px) {
-    width: 95%;
-  }
 `
 
 const Content = styled.div`
   width: 580px;
   margin: 4px auto;
-  @media (max-width: 800px) {
-    width: 95%;
-  }
 `
 
 export default PostHit

@@ -21,22 +21,22 @@ const Title = ({ data, slug, title, date }) => {
 
 const StyledTitle = styled(props => <Link {...props} />)`
   display: block;
-  width: 800px;
+  width: 720px;
   margin: 120px auto 10px;
   text-align: center;
   text-decoration: none;
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
 `
 
 const Meta = styled.div`
-  width: 800px;
+  width: 720px;
   margin: 10px auto 20px;
   font-size: 1.2rem;
   text-align: center;
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
 `
 

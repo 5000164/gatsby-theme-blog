@@ -17,12 +17,13 @@ const Footer = ({ data }) => (
 )
 
 const StyledFooter = styled.footer`
+  width: 720px;
   margin: 120px auto 20px;
   font-size: 1.2rem;
   text-align: center;
   color: hsl(235, 10%, 65%);
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
 `
 

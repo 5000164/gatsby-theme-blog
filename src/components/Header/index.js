@@ -47,7 +47,7 @@ const StyledTitleLink = styled(props => <Link {...props} />)`
     color: hsl(0, 100%, 100%);
   }
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
 `
 
@@ -58,7 +58,7 @@ const Subtitle = styled.div`
   text-align: center;
   color: hsl(235, 10%, 65%);
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
 `
 

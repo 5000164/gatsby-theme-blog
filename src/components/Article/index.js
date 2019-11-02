@@ -12,12 +12,12 @@ const Article = ({ slug, title, date, content }) => (
 const StyledArticle = styled.article`
   margin: 60px 0;
   p {
-    width: 800px;
+    width: 720px;
     margin: 20px auto;
   }
   @media (max-width: 800px) {
     p {
-      width: 95%;
+      width: 75%;
     }
   }
   p:first-child {
@@ -27,7 +27,7 @@ const StyledArticle = styled.article`
     margin-bottom: 0;
   }
   h1 {
-    width: 800px;
+    width: 720px;
     margin: 60px auto 20px;
     padding: 0 0 15px 0;
     font-size: 2.4rem;
@@ -36,11 +36,11 @@ const StyledArticle = styled.article`
   }
   @media (max-width: 800px) {
     h1 {
-      width: 95%;
+      width: 75%;
     }
   }
   h2 {
-    width: 800px;
+    width: 720px;
     margin: 60px auto 20px;
     padding: 0;
     font-size: 2rem;
@@ -48,7 +48,7 @@ const StyledArticle = styled.article`
   }
   @media (max-width: 800px) {
     h2 {
-      width: 95%;
+      width: 75%;
     }
   }
   h1 + h2 {
@@ -56,14 +56,14 @@ const StyledArticle = styled.article`
   }
   ul,
   ol {
-    width: 780px;
+    width: 700px;
     margin: auto;
     padding-left: 20px;
   }
   @media (max-width: 800px) {
     ul,
     ol {
-      width: 90%;
+      width: 70%;
       padding-left: 5%;
     }
   }
@@ -74,32 +74,32 @@ const StyledArticle = styled.article`
   }
   img {
     display: block;
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
   }
   @media (max-width: 800px) {
     img {
-      max-width: 95%;
+      max-width: 75%;
     }
   }
   blockquote {
-    width: 800px;
+    width: 720px;
     margin: 20px auto;
   }
   @media (max-width: 800px) {
     blockquote {
-      width: 95%;
+      width: 75%;
     }
   }
   blockquote > p {
     position: relative;
-    width: 780px;
+    width: 700px;
     padding-left: 20px;
   }
   @media (max-width: 800px) {
     blockquote > p {
-      width: 96%;
-      padding-left: 4%;
+      width: 70%;
+      padding-left: 5%;
     }
   }
   blockquote > p::before {
@@ -122,12 +122,12 @@ const StyledArticle = styled.article`
     padding: 1em 0;
   }
   pre > code {
-    min-width: 800px;
+    min-width: 720px;
   }
   @media (max-width: 800px) {
     pre > code {
-      min-width: 95%;
-      max-width: 95%;
+      min-width: 75%;
+      max-width: 75%;
     }
   }
 `
