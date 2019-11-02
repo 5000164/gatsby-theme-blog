@@ -11,10 +11,12 @@ const Title = ({ data, slug, title, date }) => {
   return (
     <>
       <StyledTitle to={slug}>{title}</StyledTitle>
-      <Meta>
-        <a href={historyLink}>Published {formattedDate}</a> by{" "}
-        <a href={data.site.siteMetadata.profileUrl}>Hiroshi Sugawara</a>
-      </Meta>
+      {date && (
+        <Meta>
+          <a href={historyLink}>Published {formattedDate}</a> by{" "}
+          <a href={data.site.siteMetadata.profileUrl}>Hiroshi Sugawara</a>
+        </Meta>
+      )}
     </>
   )
 }

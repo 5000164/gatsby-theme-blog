@@ -19,13 +19,7 @@ export default class BlogList extends React.Component {
           article={false}
         />
         {posts.map(({ node }) => (
-          <Article
-            key={node.fields.slug}
-            slug={node.fields.slug}
-            title={node.frontmatter.title}
-            date={node.frontmatter.date}
-            content=""
-          />
+          <Article key={node.fields.slug} slug={node.fields.slug} title={node.frontmatter.title} date="" content="" />
         ))}
         <Pagination>
           {Array.from({ length: numPages }, (_, i) => {
