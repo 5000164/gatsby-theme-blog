@@ -53,6 +53,9 @@ const StyledArticle = styled.article`
   h1 + h2 {
     margin-top: 20px;
   }
+  a {
+    text-decoration: underline;
+  }
   ul,
   ol {
     width: 700px;
