@@ -10,7 +10,6 @@ const Article = ({ slug, title, date, content }) => (
 )
 
 const StyledArticle = styled.article`
-  margin: 60px 0;
   p {
     width: 720px;
     margin: 20px auto;
