@@ -132,6 +132,13 @@ const StyledArticle = styled.article`
       max-width: 75%;
     }
   }
+  iframe {
+    display: block;
+    margin: 20px auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
 `
 
 export default Article
