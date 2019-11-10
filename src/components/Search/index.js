@@ -11,35 +11,34 @@ const Results = connectStateResults(({ searchState: state, searchResults: res, c
 )
 
 export default class Search extends Component {
-  query = ""
+  state = { query: "" }
   searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 
+  updateState = state => this.setState(state)
+
   render() {
-    const query = this.query
+    const { query } = this.state
     const index = "Posts"
 
     return (
-      <InstantSearch
-        searchClient={this.searchClient}
-        indexName={index}
-        onSearchStateChange={this.updateState}
-        root={{ Root }}
-      >
-        <Input />
-        <HitsWrapper show={query.length > 0}>
-          <Index key={index} indexName={index}>
-            <Results>
-              <Hits hitComponent={PostHit(this.disableHits)} />
-            </Results>
-          </Index>
-          <By>
-            Powered by
-            <a href="https://www.algolia.com">
-              <StyledAlgolia />
-              Algolia
-            </a>
-          </By>
-        </HitsWrapper>
+      <InstantSearch indexName={index} searchClient={this.searchClient} onSearchStateChange={this.updateState}>
+        <Root>
+          <Input />
+          <HitsWrapper show={query.length > 0}>
+            <Index key={index} indexName={index}>
+              <Results>
+                <Hits hitComponent={PostHit(this.disableHits)} />
+              </Results>
+            </Index>
+            <By>
+              Powered by
+              <a href="https://www.algolia.com">
+                <StyledAlgolia />
+                Algolia
+              </a>
+            </By>
+          </HitsWrapper>
+        </Root>
       </InstantSearch>
     )
   }
