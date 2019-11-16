@@ -3,10 +3,10 @@ import { Highlight, Snippet } from "react-instantsearch-dom"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-const PostHit = clickHandler => ({ hit }) => (
+const PostHit = () => ({ hit }) => (
   <Article>
     <Title>
-      <Link to={hit.slug} onClick={clickHandler}>
+      <Link to={hit.slug}>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </Link>
     </Title>

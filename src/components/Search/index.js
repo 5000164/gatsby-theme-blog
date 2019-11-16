@@ -27,7 +27,7 @@ export default class Search extends Component {
           <HitsWrapper show={query.length > 0}>
             <Index key={index} indexName={index}>
               <Results>
-                <Hits hitComponent={PostHit(this.disableHits)} />
+                <Hits hitComponent={PostHit()} />
               </Results>
             </Index>
             <By>
