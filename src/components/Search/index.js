@@ -1,30 +1,28 @@
 import React, { Component } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { connectStateResults, Hits, Index, InstantSearch } from "react-instantsearch-dom"
+import { connectStateResults, Hits, Index, InstantSearch, SearchBox } from "react-instantsearch-dom"
 import styled, { css } from "styled-components"
 import { Algolia } from "styled-icons/fa-brands/Algolia"
-import Input from "./Input"
 import PostHit from "./PostHit"
 
-const Results = connectStateResults(({ searchState: state, searchResults: res, children }) =>
-  res && res.nbHits ? children : `No results for ${state.query}`
-)
-
 export default class Search extends Component {
-  state = { query: "" }
-  searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
-
-  updateState = state => this.setState(state)
+  constructor(props) {
+    super(props)
+    this.state = { query: "" }
+  }
 
   render() {
-    const { query } = this.state
     const index = "Posts"
+    const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
 
     return (
-      <InstantSearch indexName={index} searchClient={this.searchClient} onSearchStateChange={this.updateState}>
+      <InstantSearch indexName={index} searchClient={searchClient}>
         <Root>
-          <Input />
-          <HitsWrapper show={query.length > 0}>
+          <SearchBox
+            onChange={e => this.setState({ query: e.target.value })}
+            onReset={e => this.setState({ query: "" })}
+          />
+          <HitsWrapper show={this.state.query.length > 0}>
             <Index key={index} indexName={index}>
               <Results>
                 <Hits hitComponent={PostHit()} />
@@ -43,6 +41,10 @@ export default class Search extends Component {
     )
   }
 }
+
+const Results = connectStateResults(({ searchState: state, searchResults: res, children }) =>
+  res && res.nbHits ? children : `No results for ${state.query}`
+)
 
 const Root = styled.div`
   position: relative;
