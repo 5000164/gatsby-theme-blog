@@ -56,9 +56,9 @@ const StyledArticle = styled.article`
   a {
     text-decoration: underline;
   }
-  ul,
-  ol {
-    width: 700px;
+  > ul,
+  > ol {
+    width: 720px;
     margin: auto;
     padding-left: 20px;
   }
@@ -71,6 +71,7 @@ const StyledArticle = styled.article`
   }
   ul p,
   ol p {
+    width: auto;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -95,7 +96,7 @@ const StyledArticle = styled.article`
   }
   blockquote > p {
     position: relative;
-    width: 700px;
+    width: 720px;
     padding-left: 20px;
   }
   @media (max-width: 800px) {
