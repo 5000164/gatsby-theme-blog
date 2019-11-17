@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     font-size: 1.8rem;
-    line-height: 1.73;
+    line-height: 1.55;
     color: hsl(235, 10%, 30%);
     background-color: hsl(0, 100%, 100%);
     }

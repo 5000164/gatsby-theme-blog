@@ -11,7 +11,7 @@ const Article = ({ slug, title, date, content }) => (
 
 const StyledArticle = styled.article`
   p {
-    width: 720px;
+    width: 600px;
     margin: 20px auto;
   }
   @media (max-width: 800px) {
@@ -26,12 +26,14 @@ const StyledArticle = styled.article`
     margin-bottom: 0;
   }
   h1 {
-    width: 720px;
-    margin: 60px auto 20px;
-    padding: 0 0 15px 0;
-    font-size: 2.4rem;
+    width: 600px;
+    margin: 80px auto 2.5rem;
+    padding: 0;
+    font-size: 3.2rem;
     font-weight: bold;
-    border-bottom: 1px solid hsl(235, 10%, 30%);
+    letter-spacing: -0.1rem;
+    line-height: 1.3;
+    color: hsl(235, 10%, 5%);
   }
   @media (max-width: 800px) {
     h1 {
@@ -39,11 +41,14 @@ const StyledArticle = styled.article`
     }
   }
   h2 {
-    width: 720px;
-    margin: 60px auto 20px;
+    width: 600px;
+    margin: 40px auto 1rem;
     padding: 0;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    letter-spacing: -0.1rem;
+    line-height: 1.3;
+    color: hsl(235, 10%, 5%);
   }
   @media (max-width: 800px) {
     h2 {
@@ -58,13 +63,13 @@ const StyledArticle = styled.article`
   }
   > ul,
   > ol {
-    width: 720px;
+    width: 600px;
     margin: auto;
     padding-left: 20px;
   }
   @media (max-width: 800px) {
-    ul,
-    ol {
+    > ul,
+    > ol {
       width: 70%;
       padding-left: 5%;
     }
@@ -77,16 +82,16 @@ const StyledArticle = styled.article`
   }
   img {
     display: block;
-    max-width: 720px;
+    width: 1140px;
     margin: 0 auto;
   }
   @media (max-width: 800px) {
     img {
-      max-width: 75%;
+      width: 100%;
     }
   }
   blockquote {
-    width: 720px;
+    width: 600px;
     margin: 20px auto;
   }
   @media (max-width: 800px) {
@@ -96,7 +101,7 @@ const StyledArticle = styled.article`
   }
   blockquote > p {
     position: relative;
-    width: 720px;
+    width: 600px;
     padding-left: 20px;
   }
   @media (max-width: 800px) {
@@ -120,17 +125,22 @@ const StyledArticle = styled.article`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    margin: 40px 0;
-    padding: 1em 0;
+    width: 1140px;
+    margin: 40px auto;
+    padding: 0;
+  }
+  @media (max-width: 800px) {
+    pre {
+      width: 100%;
+    }
   }
   pre > code {
-    min-width: 720px;
+    width: 1140px;
+    padding: 20px;
   }
   @media (max-width: 800px) {
     pre > code {
-      min-width: 75%;
-      max-width: 75%;
+      width: 100%;
     }
   }
   iframe {

@@ -47,12 +47,12 @@ const StyledUl = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2em;
-  width: 720px;
+  width: 1140px;
   list-style: none;
   margin: 120px auto;
   padding: 0;
   @media (max-width: 800px) {
-    width: 75%;
+    width: 95%;
   }
 `
 

@@ -44,7 +44,7 @@ export default class BlogList extends React.Component {
 }
 
 const Pagination = styled.ul`
-  width: 720px;
+  width: 600px;
   list-style: none;
   margin: 120px auto;
   padding: 0;
