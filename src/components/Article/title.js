@@ -10,18 +10,19 @@ const Title = ({ data, slug, title, date }) => {
     .format("MMMM Do, YYYY")
   return (
     <>
-      <StyledTitle to={slug}>{title}</StyledTitle>
+      <StyledTitle>{title}</StyledTitle>
       {date && (
         <Meta>
-          <a href={historyLink}>Published {formattedDate}</a> by{" "}
-          <a href={data.site.siteMetadata.profileUrl}>Hiroshi Sugawara</a>
+          <Slug to={slug}>Published {formattedDate}</Slug>
+          <History href={historyLink}>History</History>
+          <Author href={data.site.siteMetadata.profileUrl}>Hiroshi Sugawara</Author>
         </Meta>
       )}
     </>
   )
 }
 
-const StyledTitle = styled(props => <Link {...props} />)`
+const StyledTitle = styled.div`
   display: block;
   width: 1140px;
   margin: 220px auto 1rem;
@@ -52,6 +53,17 @@ const Meta = styled.div`
     width: 95%;
     margin: 1rem auto 140px;
   }
+`
+
+const Slug = styled(Link)`
+  margin: 0.4rem;
+`
+
+const History = styled.a`
+  margin: 0.4rem;
+`
+const Author = styled.a`
+  margin: 0.4rem;
 `
 
 export default props => (

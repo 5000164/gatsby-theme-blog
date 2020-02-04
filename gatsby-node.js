@@ -5,10 +5,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
         edges {
           node {
             fields {
@@ -32,7 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/` : `/${i + 1}`,
-        component: require.resolve("./src/templates/blog-list-template.js"),
+        component: require.resolve("./src/templates/list-template.js"),
         context: {
           limit: postsPerPage,
           skip: i * postsPerPage,
@@ -48,7 +45,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       createPage({
         path: post.node.fields.slug,
-        component: require.resolve("./src/templates/blog-template.js"),
+        component: require.resolve("./src/templates/article-template.js"),
         context: {
           slug: post.node.fields.slug,
           previous,
