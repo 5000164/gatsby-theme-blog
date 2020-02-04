@@ -14,6 +14,17 @@ export default class Search extends Component {
   render() {
     const index = "Posts"
     const searchClient = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_KEY)
+    const StateResults = ({ searchState, searchResults }) => {
+      const hasResults = searchResults && searchResults.nbHits !== 0
+      return (
+        <div>
+          <div hidden={hasResults}>
+            No results for <q>{searchState.query}</q>
+          </div>
+        </div>
+      )
+    }
+    const CustomStateResults = connectStateResults(StateResults)
 
     return (
       <InstantSearch indexName={index} searchClient={searchClient}>
@@ -24,7 +35,7 @@ export default class Search extends Component {
           />
           <HitsWrapper show={this.state.query.length > 0}>
             <Index key={index} indexName={index}>
-              <Results />
+              <CustomStateResults />
               <Hits hitComponent={PostHit()} />
             </Index>
             <By>
@@ -40,10 +51,6 @@ export default class Search extends Component {
     )
   }
 }
-
-const Results = connectStateResults(({ searchState: state, searchResults: res, children }) =>
-  res && res.nbHits ? children : `No results for ${state.query}`
-)
 
 const Root = styled.div`
   position: relative;
