@@ -24,9 +24,8 @@ export default class Search extends Component {
           />
           <HitsWrapper show={this.state.query.length > 0}>
             <Index key={index} indexName={index}>
-              <Results>
-                <Hits hitComponent={PostHit()} />
-              </Results>
+              <Results />
+              <Hits hitComponent={PostHit()} />
             </Index>
             <By>
               Powered by
