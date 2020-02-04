@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled from "styled-components"
+import Search from "../Search"
 
 const Header = ({ data }) => (
   <StyledHeader>
@@ -18,6 +19,7 @@ const Header = ({ data }) => (
         <StyledA href="https://twitter.com/5000164">Twitter</StyledA>
       </AboutItem>
     </About>
+    <Search />
   </StyledHeader>
 )
 
