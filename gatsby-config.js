@@ -51,7 +51,7 @@ module.exports = {
             },
             query: `
             {
-              allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+              allMarkdownRemark(sort: { fields: [frontmatter___published], order: DESC }) {
                 edges {
                   node {
                     excerpt
@@ -60,8 +60,9 @@ module.exports = {
                       slug
                     }
                     frontmatter {
-                      date
                       title
+                      published
+                      updated
                     }
                   }
                 }

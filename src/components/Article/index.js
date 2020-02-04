@@ -1,13 +1,67 @@
 import styled from "styled-components"
-import Title from "./title"
 import React from "react"
+import moment from "moment"
+import { graphql, Link, StaticQuery } from "gatsby"
 
-const Article = ({ slug, title, date, content }) => (
-  <>
-    <Title slug={slug} title={title} date={date} />
-    <StyledArticle dangerouslySetInnerHTML={{ __html: content }} />
-  </>
-)
+const Article = ({ data, slug, title, published, updated, content }) => {
+  const formatter = date =>
+    moment(date, "YYYY-MM-DD HH:mm:ss Z")
+      .local()
+      .format("MMMM Do, YYYY")
+  const historyLink = data.site.siteMetadata.repository + "/commits/master/src/posts" + slug.slice(0, -1) + ".md"
+
+  return (
+    <>
+      <Wrapper>
+        <StyledTitle>{title}</StyledTitle>
+        <Date>
+          Published <Link to={slug}>{formatter(published)}</Link>
+        </Date>
+        {published !== updated && (
+          <Date>
+            Updated <a href={historyLink}>{formatter(updated)}</a>
+          </Date>
+        )}
+      </Wrapper>
+      <StyledArticle dangerouslySetInnerHTML={{ __html: content }} />
+    </>
+  )
+}
+
+const Wrapper = styled.div`
+  margin: 220px auto;
+`
+
+const StyledTitle = styled.div`
+  display: block;
+  width: 1140px;
+  margin: 10px auto;
+  font-family: serif;
+  font-size: 4.8rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: -0.25rem;
+  line-height: 1.3;
+  text-decoration: none;
+  color: hsl(235, 10%, 5%);
+  :visited {
+    color: hsl(235, 10%, 5%);
+  }
+  @media (max-width: 800px) {
+    width: 95%;
+    font-size: 3.2rem;
+  }
+`
+
+const Date = styled.div`
+  width: 600px;
+  margin: 5px auto;
+  font-size: 1.2rem;
+  text-align: center;
+  @media (max-width: 800px) {
+    width: 95%;
+  }
+`
 
 const StyledArticle = styled.article`
   p {
@@ -152,4 +206,18 @@ const StyledArticle = styled.article`
   }
 `
 
-export default Article
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            repository
+            profileUrl
+          }
+        }
+      }
+    `}
+    render={data => <Article data={data} {...props} />}
+  />
+)

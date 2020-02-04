@@ -14,7 +14,7 @@ const List = ({ posts }) => {
       {posts.map(({ node }) => (
         <Link to={node.fields.slug} key={node.fields.slug}>
           <Title>{node.frontmatter.title}</Title>
-          <Date>{formatter(node.frontmatter.date)}</Date>
+          <Date>{formatter(node.frontmatter.published)}</Date>
         </Link>
       ))}
     </>

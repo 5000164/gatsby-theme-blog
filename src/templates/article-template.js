@@ -18,7 +18,13 @@ export default props => {
         slug={markdownRemark.fields.slug}
         article={true}
       />
-      <Article slug={markdownRemark.fields.slug} title={frontmatter.title} date={frontmatter.date} content={html} />
+      <Article
+        slug={markdownRemark.fields.slug}
+        title={frontmatter.title}
+        published={frontmatter.published}
+        updated={frontmatter.updated}
+        content={html}
+      />
       <StyledUl>
         <PreviousLi>
           {previous && (
@@ -75,7 +81,8 @@ export const query = graphql`
       }
       frontmatter {
         title
-        date
+        published
+        updated
       }
       html
       excerpt(format: PLAIN, pruneLength: 300, truncate: true)

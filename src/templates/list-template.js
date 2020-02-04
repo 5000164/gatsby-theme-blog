@@ -64,7 +64,7 @@ export const query = graphql`
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
+    allMarkdownRemark(sort: { fields: [frontmatter___published], order: DESC }, limit: $limit, skip: $skip) {
       edges {
         node {
           fields {
@@ -72,7 +72,8 @@ export const query = graphql`
           }
           frontmatter {
             title
-            date
+            published
+            updated
           }
           html
         }

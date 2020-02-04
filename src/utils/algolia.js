@@ -10,7 +10,8 @@ const postQuery = `{
         }
         frontmatter {
           title
-          date
+          published
+          updated
         }
         excerpt(pruneLength: 3000)
       }
