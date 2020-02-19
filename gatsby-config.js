@@ -51,7 +51,10 @@ module.exports = {
             },
             query: `
             {
-              allMarkdownRemark(sort: { fields: [frontmatter___published], order: DESC }) {
+              allMarkdownRemark(
+              sort: { fields: [frontmatter___published], order: DESC },
+              limit: 10,
+              ) {
                 edges {
                   node {
                     excerpt
