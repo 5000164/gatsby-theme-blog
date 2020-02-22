@@ -5,7 +5,7 @@ import { graphql, StaticQuery } from "gatsby"
 import Facebook from "./Facebook"
 import Twitter from "./Twitter"
 
-const SEO = ({ title, description, slug, article }) => (
+const SEO = ({ title, description, featuredImage, slug, article }) => (
   <StaticQuery
     query={query}
     render={({
@@ -16,7 +16,7 @@ const SEO = ({ title, description, slug, article }) => (
       const seo = {
         title: title,
         description: description,
-        image: `${siteUrl}${image}`,
+        image: featuredImage ? `${siteUrl}${featuredImage.childImageSharp.fluid.src}` : `${siteUrl}${image}`,
         url: `${siteUrl}${slug || "/"}`,
       }
 
@@ -47,6 +47,7 @@ export default SEO
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
+  featuredImage: PropTypes.object,
   slug: PropTypes.string,
   article: PropTypes.bool,
 }
@@ -54,6 +55,7 @@ SEO.propTypes = {
 SEO.defaultProps = {
   title: null,
   description: null,
+  featuredImage: null,
   pathname: null,
   article: false,
 }

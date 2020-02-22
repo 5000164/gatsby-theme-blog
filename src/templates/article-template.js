@@ -15,6 +15,7 @@ export default props => {
       <SEO
         title={frontmatter.title + " | " + props.data.site.siteMetadata.title}
         description={excerpt}
+        featuredImage={frontmatter.featuredImage}
         slug={markdownRemark.fields.slug}
         article={true}
       />
