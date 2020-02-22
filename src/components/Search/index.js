@@ -63,6 +63,7 @@ const HitsWrapper = styled.div`
   right: 0;
   visibility: ${props => (props.show ? "visible" : "hidden")};
   opacity: ${props => (props.show ? "1" : "0")};
+  z-index: 1;
   width: 600px;
   max-height: 500px;
   margin: 0 auto;
