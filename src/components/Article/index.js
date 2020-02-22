@@ -134,9 +134,6 @@ const StyledArticle = styled.article`
     margin-top: 0;
     margin-bottom: 0;
   }
-  figure > span {
-    max-height: 642px;
-  }
   figcaption {
     text-align: center;
   }
