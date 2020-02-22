@@ -23,6 +23,7 @@ export default props => {
         title={frontmatter.title}
         published={frontmatter.published}
         updated={frontmatter.updated}
+        featuredImage={frontmatter.featuredImage}
         content={html}
       />
       <StyledUl>
@@ -83,6 +84,13 @@ export const query = graphql`
         title
         published
         updated
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 1140) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       html
       excerpt(format: PLAIN, pruneLength: 300, truncate: true)

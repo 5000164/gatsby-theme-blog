@@ -1,9 +1,10 @@
-import styled from "styled-components"
 import React from "react"
-import moment from "moment"
 import { graphql, Link, StaticQuery } from "gatsby"
+import styled from "styled-components"
+import moment from "moment"
+import Img from "gatsby-image"
 
-const Article = ({ data, slug, title, published, updated, content }) => {
+const Article = ({ data, slug, title, published, updated, content, featuredImage }) => {
   const formatter = date =>
     moment(date, "YYYY-MM-DD HH:mm:ss Z")
       .local()
@@ -13,6 +14,11 @@ const Article = ({ data, slug, title, published, updated, content }) => {
   return (
     <>
       <Wrapper>
+        {featuredImage && (
+          <FeaturedImageWrapper>
+            <Img fluid={featuredImage.childImageSharp.fluid} />
+          </FeaturedImageWrapper>
+        )}
         <StyledTitle>{title}</StyledTitle>
         <Date>
           Published <Link to={slug}>{formatter(published)}</Link>
@@ -29,13 +35,28 @@ const Article = ({ data, slug, title, published, updated, content }) => {
 }
 
 const Wrapper = styled.div`
-  margin: 220px auto;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 220px 0;
+`
+
+const FeaturedImageWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 1140px;
+  margin: 0 auto;
 `
 
 const StyledTitle = styled.div`
   display: block;
   width: 1140px;
   margin: 10px auto;
+  padding: 8px 0 4px;
   font-family: serif;
   font-size: 4.8rem;
   font-weight: bold;
@@ -47,6 +68,7 @@ const StyledTitle = styled.div`
   :visited {
     color: hsl(235, 10%, 5%);
   }
+  background-color: hsl(0, 100%, 100%);
   @media (max-width: 800px) {
     width: 95%;
     font-size: 3.2rem;
@@ -56,8 +78,10 @@ const StyledTitle = styled.div`
 const Date = styled.div`
   width: 600px;
   margin: 5px auto;
+  padding: 4px 0;
   font-size: 1.2rem;
   text-align: center;
+  background-color: hsl(0, 100%, 100%);
   @media (max-width: 800px) {
     width: 95%;
   }
@@ -72,12 +96,6 @@ const StyledArticle = styled.article`
     p {
       width: 75%;
     }
-  }
-  p:first-child {
-    margin-top: 0;
-  }
-  p:last-child {
-    margin-bottom: 0;
   }
   h1 {
     width: 600px;
