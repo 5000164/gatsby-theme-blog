@@ -134,10 +134,11 @@ const StyledArticle = styled.article`
     margin-top: 0;
     margin-bottom: 0;
   }
-  img {
-    display: block;
-    width: 1140px;
-    margin: 0 auto;
+  figure > span {
+    max-height: 642px;
+  }
+  figcaption {
+    text-align: center;
   }
   @media (max-width: 800px) {
     img {
