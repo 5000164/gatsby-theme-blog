@@ -63,11 +63,6 @@ const StyledTitle = styled.div`
   text-align: center;
   letter-spacing: -0.25rem;
   line-height: 1.3;
-  text-decoration: none;
-  color: hsl(235, 10%, 5%);
-  :visited {
-    color: hsl(235, 10%, 5%);
-  }
   background-color: hsl(0, 100%, 100%);
   @media (max-width: 800px) {
     width: 95%;
