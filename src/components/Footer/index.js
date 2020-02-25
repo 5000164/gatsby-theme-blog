@@ -15,7 +15,7 @@ const Footer = ({ data }) => (
     <div>
       <Link to={"/privacy/"}>Privacy Policy</Link>
     </div>
-    <div>Copyright © 2019 Hiroshi Sugawara. All rights reserved.</div>
+    <div>Copyright © 2020 Hiroshi Sugawara. All rights reserved.</div>
   </StyledFooter>
 )
 
