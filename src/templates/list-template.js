@@ -40,20 +40,22 @@ export default props => {
 }
 
 const Pagination = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
   width: 600px;
   list-style: none;
   margin: 120px auto;
   padding: 0;
-  text-align: center;
   @media (max-width: 800px) {
     width: 75%;
-    overflow-x: scroll;
   }
 `
 
 const Page = styled.li`
-  display: inline;
+  width: 28px;
   margin: 4px;
+  padding: 0;
+  text-align: center;
 `
 
 export const query = graphql`
