@@ -39,6 +39,9 @@ const Wrapper = styled.div`
   overflow: hidden;
   margin: 8px auto 40px;
   padding: 220px 0;
+  @media (max-width: 800px) {
+    margin: 8px 8px 40px;
+  }
 `
 
 const FeaturedImageWrapper = styled.div`
