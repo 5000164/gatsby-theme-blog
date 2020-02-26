@@ -33,7 +33,6 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     color: hsl(235, 10%, 50%);
-    text-decoration: none;
   }
   a:visited {
     color: hsl(235, 10%, 50%);
