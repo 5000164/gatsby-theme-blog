@@ -97,7 +97,7 @@ const hits = css`
 `
 
 const By = styled.div`
-  font-size: 0.8em;
+  font-size: 1.2rem;
   text-align: right;
 `
 

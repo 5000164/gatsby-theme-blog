@@ -15,8 +15,8 @@ const Form = styled.form`
 `
 
 const SearchIcon = styled(Search)`
-  width: 2em;
-  padding: 0 0.5em;
+  width: 2rem;
+  padding: 0 0.5rem;
   ${() => blurredIcon}
 `
 
@@ -25,10 +25,10 @@ const blurredIcon = css`
 `
 
 const Input = styled.input`
-  font-size: 1em;
+  font-size: 1rem;
   background: transparent;
-  margin-left: -2em;
-  padding-left: 2em;
+  margin-left: -2rem;
+  padding-left: 2rem;
   outline: none;
   border: none;
   transition: width 0.25s ease-out 0s;

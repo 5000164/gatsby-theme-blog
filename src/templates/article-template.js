@@ -52,7 +52,7 @@ export default props => {
 const StyledUl = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 2em;
+  grid-column-gap: 2rem;
   width: 1140px;
   list-style: none;
   margin: 120px auto;
