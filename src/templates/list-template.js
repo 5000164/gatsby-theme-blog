@@ -43,9 +43,9 @@ const Pagination = styled.ul`
   display: flex;
   flex-wrap: wrap;
   width: 600px;
-  list-style: none;
   margin: 120px auto;
   padding: 0;
+  list-style: none;
   @media (max-width: 800px) {
     width: 75%;
   }

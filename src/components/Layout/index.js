@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from "styled-components"
-import Header from "../Header"
 import Footer from "../Footer"
 
 const GlobalStyle = createGlobalStyle`
@@ -46,7 +45,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Header />
       {children}
       <Footer />
     </>

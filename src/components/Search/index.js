@@ -58,7 +58,7 @@ const Root = styled.div`
 
 const HitsWrapper = styled.div`
   position: absolute;
-  top: calc(100% + 0.5em);
+  bottom: calc(100% + 0.5em);
   left: -200px;
   right: 0;
   visibility: ${props => (props.show ? "visible" : "hidden")};

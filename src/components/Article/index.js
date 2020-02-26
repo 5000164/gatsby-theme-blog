@@ -37,7 +37,7 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
 const Wrapper = styled.div`
   position: relative;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 8px auto 40px;
   padding: 220px 0;
 `
 
