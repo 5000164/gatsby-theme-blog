@@ -132,8 +132,11 @@ const StyledArticle = styled.article`
   @media (max-width: 800px) {
     > ul,
     > ol {
-      width: 70%;
-      padding-left: 5%;
+      width: 75%;
+    }
+    ul > li,
+    ol > li {
+      margin-left: -20px;
     }
   }
   ul p,
