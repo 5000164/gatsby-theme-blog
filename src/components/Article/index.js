@@ -185,8 +185,6 @@ const StyledArticle = styled.article`
   }
   pre {
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 1140px;
     margin: 40px auto;
     padding: 0;
@@ -197,13 +195,7 @@ const StyledArticle = styled.article`
     }
   }
   pre > code {
-    width: 1140px;
-    padding: 20px;
-  }
-  @media (max-width: 800px) {
-    pre > code {
-      width: 100%;
-    }
+    padding: 12px 20px;
   }
   iframe {
     display: block;
