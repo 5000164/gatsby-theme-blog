@@ -31,7 +31,7 @@ export default class Search extends Component {
         <Root>
           <SearchBox
             onChange={e => this.setState({ query: e.target.value })}
-            onReset={e => this.setState({ query: "" })}
+            onReset={() => this.setState({ query: "" })}
           />
           <HitsWrapper show={this.state.query.length > 0}>
             <Index key={index} indexName={index}>
