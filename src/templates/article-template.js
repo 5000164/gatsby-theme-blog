@@ -9,6 +9,7 @@ export default props => {
   const { markdownRemark } = props.data
   const { frontmatter, html, excerpt } = markdownRemark
   const { previous, next } = props.pageContext
+  const recentPosts = props.data.allMarkdownRemark.edges
 
   return (
     <Layout>
@@ -27,47 +28,48 @@ export default props => {
         featuredImage={frontmatter.featuredImage}
         content={html}
       />
-      <StyledUl>
-        <PreviousLi>
-          {previous && (
-            <Link to={previous.fields.slug} rel="prev">
-              <div>←</div>
-              <div>{previous.frontmatter.title}</div>
-            </Link>
-          )}
-        </PreviousLi>
-        <NextLi>
-          {next && (
-            <Link to={next.fields.slug} rel="next">
-              <div>→</div>
+      <RelatedPosts>
+        {next && (
+          <PostsWrapper>
+            <div>Next Post</div>
+            <Post to={next.fields.slug}>
               <div>{next.frontmatter.title}</div>
-            </Link>
-          )}
-        </NextLi>
-      </StyledUl>
+            </Post>
+          </PostsWrapper>
+        )}
+        {previous && (
+          <PostsWrapper>
+            <div>Previous Post</div>
+            <Post to={previous.fields.slug}>
+              <div>{previous.frontmatter.title}</div>
+            </Post>
+          </PostsWrapper>
+        )}
+        <PostsWrapper>
+          <div>Recent Posts</div>
+          {recentPosts.map(({ node }) => (
+            <Post to={node.fields.slug} key={node.fields.slug}>
+              <div>{node.frontmatter.title}</div>
+            </Post>
+          ))}
+        </PostsWrapper>
+      </RelatedPosts>
     </Layout>
   )
 }
 
-const StyledUl = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 2rem;
-  width: 1140px;
-  list-style: none;
-  margin: 120px auto;
-  padding: 0;
-  @media (max-width: 800px) {
-    width: 95%;
-  }
+const RelatedPosts = styled.div`
+  width: 600px;
+  margin: 240px auto;
 `
 
-const PreviousLi = styled.li`
-  text-align: left;
+const PostsWrapper = styled.div`
+  margin: 80px 0;
 `
 
-const NextLi = styled.li`
-  text-align: right;
+const Post = styled(props => <Link {...props} />)`
+  display: block;
+  margin: 8px 0;
 `
 
 export const query = graphql`
@@ -95,6 +97,19 @@ export const query = graphql`
       }
       html
       excerpt(format: PLAIN, pruneLength: 300, truncate: true)
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___published], order: DESC }, limit: 5) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+          html
+        }
+      }
     }
   }
 `
