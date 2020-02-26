@@ -12,46 +12,40 @@ const List = ({ posts }) => {
   return (
     <>
       {posts.map(({ node }) => (
-        <Link to={node.fields.slug} key={node.fields.slug}>
+        <StyledLink to={node.fields.slug} key={node.fields.slug}>
           <Title>{node.frontmatter.title}</Title>
           <Date>{formatter(node.frontmatter.published)}</Date>
-        </Link>
+        </StyledLink>
       ))}
     </>
   )
 }
 
-const Title = styled.div`
+const StyledLink = styled(props => <Link {...props} />)`
   display: block;
-  width: 1140px;
-  margin: 60px auto 10px;
-  font-size: 3rem;
-  text-align: center;
-  letter-spacing: -0.1rem;
+  width: 600px;
+  margin: 80px auto;
   text-decoration: none;
-  color: hsl(235, 10%, 5%);
-  :visited {
-    color: hsl(235, 10%, 5%);
-  }
   @media (max-width: 800px) {
     width: 95%;
   }
 `
 
-const Date = styled.div`
-  display: block;
-  width: 1140px;
-  margin: 10px auto;
-  font-size: 1.5rem;
-  text-align: center;
-  letter-spacing: -0.05rem;
-  text-decoration: none;
+const Title = styled.div`
+  margin: 4px 0;
+  font-size: 2rem;
   color: hsl(235, 10%, 5%);
   :visited {
     color: hsl(235, 10%, 5%);
   }
-  @media (max-width: 800px) {
-    width: 95%;
+`
+
+const Date = styled.div`
+  margin: 4px 0;
+  font-size: 1.2rem;
+  color: hsl(235, 10%, 5%);
+  :visited {
+    color: hsl(235, 10%, 5%);
   }
 `
 
