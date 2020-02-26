@@ -57,12 +57,11 @@ const StyledTitle = styled.div`
   width: 1140px;
   margin: 10px auto;
   padding: 8px 0 4px;
-  font-family: serif;
   font-size: 4.8rem;
-  font-weight: bold;
   text-align: center;
-  letter-spacing: -0.25rem;
+  letter-spacing: -0.1rem;
   line-height: 1.3;
+  color: hsl(235, 10%, 20%);
   background-color: hsl(0, 100%, 100%);
   @media (max-width: 800px) {
     width: 95%;
@@ -94,13 +93,13 @@ const StyledArticle = styled.article`
   }
   h1 {
     width: 600px;
-    margin: 80px auto 2.5rem;
+    margin: 120px auto 20px;
     padding: 0;
+    font-weight: lighter;
     font-size: 3.2rem;
-    font-weight: bold;
-    letter-spacing: -0.1rem;
+    letter-spacing: -0.05rem;
     line-height: 1.3;
-    color: hsl(235, 10%, 5%);
+    color: hsl(235, 10%, 24%);
   }
   @media (max-width: 800px) {
     h1 {
@@ -109,13 +108,12 @@ const StyledArticle = styled.article`
   }
   h2 {
     width: 600px;
-    margin: 40px auto 1rem;
+    margin: 80px auto 20px;
     padding: 0;
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: -0.1rem;
+    font-weight: lighter;
+    font-size: 2.4rem;
+    letter-spacing: -0.01rem;
     line-height: 1.3;
-    color: hsl(235, 10%, 5%);
   }
   @media (max-width: 800px) {
     h2 {

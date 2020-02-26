@@ -8,11 +8,12 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     margin: 0;
+    font-family: serif;
+    font-weight: lighter;
     font-size: 62.5%;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
     font-kerning: normal; // フォントのカーニングを常に有効にする
     font-feature-settings: "palt"; // 自動カーニングさせる
-    letter-spacing: 0.02rem; // 字間を調整
+    letter-spacing: 0.03rem; // 字間を調整
     -webkit-font-smoothing: antialiased; // フォントにアンチエイリアスをかける (少し細く見える)
     -moz-osx-font-smoothing: grayscale;
   }
@@ -22,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1.8rem;
     line-height: 1.55;
-    color: hsl(235, 10%, 30%);
+    color: hsl(235, 10%, 28%);
     background-color: hsl(0, 100%, 100%);
     }
   @media (max-width: 800px) {
