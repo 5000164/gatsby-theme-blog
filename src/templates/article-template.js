@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Article from "../components/Article"
+import Author from "../components/Author"
 
 export default props => {
   const { markdownRemark } = props.data
@@ -28,6 +29,7 @@ export default props => {
         featuredImage={frontmatter.featuredImage}
         content={html}
       />
+      <Author />
       <RelatedPosts>
         {next && (
           <PostsWrapper>
