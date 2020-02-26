@@ -1,6 +1,8 @@
 import React from "react"
+import { graphql, StaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
+import CookieConsent from "react-cookie-consent"
 import Footer from "../Footer"
 
 const GlobalStyle = createGlobalStyle`
@@ -42,18 +44,108 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, data }) => {
+  const consent = data.site.siteMetadata.consent
+
   return (
     <>
       <GlobalStyle />
       {children}
       <Footer />
+      <CookieConsentWrapper>
+        <CookieConsent
+          cookieName="gatsby-gdpr-google-analytics"
+          buttonText={consent.accept}
+          declineButtonText={consent.decline}
+          enableDeclineButton={true}
+          disableStyles={true}
+          containerClasses="container"
+          contentClasses="content"
+          declineButtonClasses="declineButton"
+          buttonClasses="button"
+        >
+          <div dangerouslySetInnerHTML={{ __html: consent.text }} />
+        </CookieConsent>
+      </CookieConsentWrapper>
     </>
   )
 }
 
+const CookieConsentWrapper = styled.div`
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1.2rem;
+    color: hsl(235, 10%, 28%);
+    background-color: hsl(0, 100%, 100%);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+  .content {
+    width: 940px;
+    margin: 20px 0;
+  }
+  @media (max-width: 800px) {
+    .content {
+      width: 95%;
+    }
+  }
+  .declineButton {
+    width: 80px;
+    margin: 20px 0 20px 20px;
+  }
+  @media (max-width: 800px) {
+    .declineButton {
+      width: 50%;
+      margin: 20px 0;
+    }
+  }
+  .button {
+    width: 80px;
+    margin: 20px 0 20px 20px;
+  }
+  @media (max-width: 800px) {
+    .button {
+      width: 50%;
+      margin: 20px 0;
+    }
+  }
+`
+
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            consent {
+              text
+              accept
+              decline
+            }
+          }
+        }
+      }
+    `}
+    render={data => <Layout data={data} {...props} />}
+  />
+)
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        consent: PropTypes.shape({
+          text: PropTypes.string.isRequired,
+          accept: PropTypes.string.isRequired,
+          decline: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 }
-
-export default Layout
