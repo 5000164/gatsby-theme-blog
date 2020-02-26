@@ -18,7 +18,7 @@ const Name = styled.div`
   font-size: 1.6rem;
   text-align: center;
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
 `
 
@@ -28,7 +28,7 @@ const Profile = styled.div`
   font-size: 1.6rem;
   text-align: center;
   @media (max-width: 800px) {
-    width: 95%;
+    width: 75%;
   }
 `
 
