@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     color: hsl(235, 10%, 28%);
     background-color: hsl(0, 100%, 100%);
     }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     body {
       line-height: 1.9; // スマホでは行間を少し広くする
     }
@@ -98,7 +98,7 @@ const CookieConsentWrapper = styled.div`
     width: 940px;
     margin: 20px 0;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     .content {
       width: 95%;
     }
@@ -107,7 +107,7 @@ const CookieConsentWrapper = styled.div`
     width: 80px;
     margin: 20px 0 20px 20px;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     .declineButton {
       width: 50%;
       margin: 20px 0;
@@ -117,7 +117,7 @@ const CookieConsentWrapper = styled.div`
     width: 80px;
     margin: 20px 0 20px 20px;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     .button {
       width: 50%;
       margin: 20px 0;

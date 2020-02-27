@@ -26,7 +26,7 @@ const StyledLink = styled(props => <Link {...props} />)`
   width: 600px;
   margin: 80px auto;
   text-decoration: none;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 95%;
   }
 `

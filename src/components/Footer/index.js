@@ -44,7 +44,7 @@ const StyledTitle = styled(props => <Link {...props} />)`
   font-size: 2rem;
   letter-spacing: -0.2rem;
   text-decoration: none;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `
@@ -55,7 +55,7 @@ const Subtitle = styled.div`
   margin: auto;
   font-size: 1.2rem;
   color: hsl(235, 10%, 65%);
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `
@@ -64,7 +64,7 @@ const SearchWrapper = styled.div`
   display: block;
   width: 600px;
   margin: auto;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `
@@ -74,7 +74,7 @@ const About = styled.ul`
   margin: 20px auto;
   padding: 0;
   list-style-type: none;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `
@@ -84,7 +84,7 @@ const RSS = styled.a`
   width: 600px;
   margin: 8px auto;
   padding: 0;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `
@@ -97,7 +97,7 @@ const PrivacyPolicy = styled.div`
   width: 600px;
   margin: 8px auto;
   padding: 0;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `
@@ -106,7 +106,7 @@ const Copyright = styled.div`
   width: 600px;
   margin: 8px auto;
   padding: 0;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `

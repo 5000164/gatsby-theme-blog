@@ -77,7 +77,7 @@ const HitsWrapper = styled.div`
     props.show
       ? "visibility 0s ease-out 0s, opacity .25s ease-out 0s"
       : "visibility 0s ease-out .25s, opacity .25s ease-out 0s"};
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
   ${() => hits}
@@ -89,7 +89,7 @@ const hits = css`
     list-style: none;
     padding: 0;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     ul {
       width: 75%;
     }

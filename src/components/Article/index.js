@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   margin: 8px auto 40px;
   padding: 220px 0;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     margin: 8px 8px 40px;
   }
 `
@@ -66,7 +66,7 @@ const StyledTitle = styled.div`
   line-height: 1.3;
   color: hsl(235, 10%, 20%);
   background-color: hsl(0, 100%, 100%);
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 95%;
     font-size: 3.2rem;
   }
@@ -79,7 +79,7 @@ const Date = styled.div`
   font-size: 1.2rem;
   text-align: center;
   background-color: hsl(0, 100%, 100%);
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 95%;
   }
 `
@@ -89,7 +89,7 @@ const StyledArticle = styled.article`
     width: 600px;
     margin: 20px auto;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     p {
       width: 75%;
     }
@@ -104,7 +104,7 @@ const StyledArticle = styled.article`
     line-height: 1.3;
     color: hsl(235, 10%, 24%);
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     h1 {
       width: 75%;
     }
@@ -118,7 +118,7 @@ const StyledArticle = styled.article`
     letter-spacing: -0.01rem;
     line-height: 1.3;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     h2 {
       width: 75%;
     }
@@ -132,7 +132,7 @@ const StyledArticle = styled.article`
     margin: auto;
     padding-left: 20px;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     > ul,
     > ol {
       width: 75%;
@@ -151,7 +151,7 @@ const StyledArticle = styled.article`
   figcaption {
     text-align: center;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     img {
       width: 100%;
     }
@@ -160,7 +160,7 @@ const StyledArticle = styled.article`
     width: 600px;
     margin: 20px auto;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     blockquote {
       width: 75%;
     }
@@ -170,7 +170,7 @@ const StyledArticle = styled.article`
     width: 600px;
     padding-left: 20px;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     blockquote > p {
       width: 70%;
       padding-left: 5%;
@@ -193,7 +193,7 @@ const StyledArticle = styled.article`
     margin: 40px auto;
     padding: 0;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     pre {
       width: 100%;
     }

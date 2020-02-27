@@ -46,7 +46,7 @@ const Pagination = styled.ul`
   margin: 120px auto;
   padding: 0;
   list-style: none;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 75%;
   }
 `

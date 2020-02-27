@@ -63,7 +63,7 @@ export default ({ data, pageContext, location }) => {
 const RelatedPosts = styled.div`
   width: 600px;
   margin: 240px auto;
-  @media (max-width: 800px) {
+  @media (max-width: 1140px) {
     width: 95%;
   }
 `
