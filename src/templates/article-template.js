@@ -6,16 +6,16 @@ import SEO from "../components/SEO"
 import Article from "../components/Article"
 import Author from "../components/Author"
 
-export default props => {
-  const { markdownRemark } = props.data
+export default ({ data, pageContext, location }) => {
+  const { markdownRemark } = data
   const { frontmatter, html, excerpt } = markdownRemark
-  const { previous, next } = props.pageContext
-  const recentPosts = props.data.allMarkdownRemark.edges
+  const { previous, next } = pageContext
+  const recentPosts = data.allMarkdownRemark.edges
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
-        title={frontmatter.title + " | " + props.data.site.siteMetadata.title}
+        title={frontmatter.title + " | " + data.site.siteMetadata.title}
         description={excerpt}
         featuredImage={frontmatter.featuredImage}
         slug={markdownRemark.fields.slug}

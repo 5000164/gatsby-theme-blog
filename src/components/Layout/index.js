@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const Layout = ({ children, data }) => {
+const Layout = ({ children, location, data }) => {
   const consent = data.site.siteMetadata.consent
 
   return (
@@ -66,6 +66,11 @@ const Layout = ({ children, data }) => {
           buttonClasses="button"
           onAccept={() => {
             ReactGA.initialize(data.site.siteMetadata.trackingId)
+            ReactGA.set({
+              page: location.pathname,
+              anonymizeIp: data.site.siteMetadata.anonymize,
+            })
+            ReactGA.pageview(location.pathname)
           }}
         >
           <div dangerouslySetInnerHTML={{ __html: consent.text }} />
@@ -132,6 +137,7 @@ export default props => (
               decline
             }
             trackingId
+            anonymize
           }
         }
       }
@@ -142,6 +148,7 @@ export default props => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
@@ -151,6 +158,7 @@ Layout.propTypes = {
           decline: PropTypes.string.isRequired,
         }).isRequired,
         trackingId: PropTypes.string.isRequired,
+        anonymize: PropTypes.bool.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,

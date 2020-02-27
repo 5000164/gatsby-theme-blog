@@ -5,15 +5,15 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import List from "../components/List"
 
-export default props => {
-  const posts = props.data.allMarkdownRemark.edges
-  const { currentPage, numPages } = props.pageContext
+export default ({ data, pageContext, location }) => {
+  const posts = data.allMarkdownRemark.edges
+  const { currentPage, numPages } = pageContext
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
-        title={props.data.site.siteMetadata.title}
-        description={props.data.site.siteMetadata.description}
+        title={data.site.siteMetadata.title}
+        description={data.site.siteMetadata.description}
         slug={"/"}
         article={false}
       />
