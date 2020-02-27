@@ -3,6 +3,7 @@ import { graphql, StaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import styled, { createGlobalStyle } from "styled-components"
 import CookieConsent from "react-cookie-consent"
+import ReactGA from "react-ga"
 import Footer from "../Footer"
 
 const GlobalStyle = createGlobalStyle`
@@ -63,6 +64,9 @@ const Layout = ({ children, data }) => {
           contentClasses="content"
           declineButtonClasses="declineButton"
           buttonClasses="button"
+          onAccept={() => {
+            ReactGA.initialize(data.site.siteMetadata.trackingId)
+          }}
         >
           <div dangerouslySetInnerHTML={{ __html: consent.text }} />
         </CookieConsent>
@@ -127,6 +131,7 @@ export default props => (
               accept
               decline
             }
+            trackingId
           }
         }
       }
@@ -145,6 +150,7 @@ Layout.propTypes = {
           accept: PropTypes.string.isRequired,
           decline: PropTypes.string.isRequired,
         }).isRequired,
+        trackingId: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
