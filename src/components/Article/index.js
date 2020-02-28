@@ -56,7 +56,6 @@ const FeaturedImageWrapper = styled.div`
 `
 
 const StyledTitle = styled.div`
-  display: block;
   width: 1140px;
   margin: 10px auto;
   padding: 8px 0 4px;
