@@ -101,6 +101,7 @@ const CookieConsentWrapper = styled.div`
   @media (max-width: 1140px) {
     .content {
       width: 95%;
+      margin: 20px 0 10px;
     }
   }
   .declineButton {
@@ -110,7 +111,7 @@ const CookieConsentWrapper = styled.div`
   @media (max-width: 1140px) {
     .declineButton {
       width: 50%;
-      margin: 20px 0;
+      margin: 10px 0 20px;
     }
   }
   .button {
@@ -120,7 +121,7 @@ const CookieConsentWrapper = styled.div`
   @media (max-width: 1140px) {
     .button {
       width: 50%;
-      margin: 20px 0;
+      margin: 10px 0 20px;
     }
   }
 `

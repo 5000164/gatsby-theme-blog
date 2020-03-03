@@ -64,7 +64,7 @@ const RelatedPosts = styled.div`
   width: 600px;
   margin: 240px auto;
   @media (max-width: 1140px) {
-    width: 95%;
+    width: 75%;
   }
 `
 
