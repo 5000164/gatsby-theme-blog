@@ -83,8 +83,8 @@ const Layout = ({ children, location, data }) => {
 const CookieConsentWrapper = styled.div`
   .container {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     position: fixed;
     bottom: 0;
     left: 0;
