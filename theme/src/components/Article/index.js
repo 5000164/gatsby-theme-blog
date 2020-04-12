@@ -14,11 +14,7 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
   return (
     <>
       <Wrapper>
-        {featuredImage && (
-          <FeaturedImageWrapper>
-            <Img fluid={featuredImage.childImageSharp.fluid} />
-          </FeaturedImageWrapper>
-        )}
+        {featuredImage && <Img fluid={featuredImage.childImageSharp.fluid} style={{ position: "absolute" }} />}
         <StyledTitle>{title}</StyledTitle>
         <Date>
           Published <Link to={slug}>{formatter(published)}</Link>
@@ -35,29 +31,38 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
 }
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
+  width: 1140px;
+  height: 476px;
   margin: 8px auto 40px;
-  padding: 220px 0;
   @media (max-width: 1140px) {
+    width: calc(100% - 16px);
     margin: 8px 8px 40px;
   }
-`
 
-const FeaturedImageWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  width: 1140px;
-  margin: 0 auto;
+  .gatsby-image-wrapper {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 1140px;
+    height: 476px;
+    margin: 0 auto;
+    @media (max-width: 1140px) {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `
 
 const StyledTitle = styled.div`
   width: 1140px;
-  margin: 10px auto;
+  margin: 8px auto;
   padding: 8px 0 4px;
   font-size: 4.8rem;
   text-align: center;
@@ -73,7 +78,7 @@ const StyledTitle = styled.div`
 
 const Date = styled.div`
   width: 600px;
-  margin: 5px auto;
+  margin: 8px auto;
   padding: 4px 0;
   font-size: 1.2rem;
   text-align: center;
@@ -147,11 +152,20 @@ const StyledArticle = styled.article`
     margin-top: 0;
     margin-bottom: 0;
   }
+  figure {
+    width: 1140px;
+    margin: 20px auto;
+  }
   figcaption {
+    width: 1140px;
+    margin: 8px auto;
     text-align: center;
   }
   @media (max-width: 1140px) {
-    img {
+    figure {
+      width: 100%;
+    }
+    figcaption {
       width: 100%;
     }
   }
@@ -189,7 +203,7 @@ const StyledArticle = styled.article`
   pre {
     display: flex;
     width: 1140px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 0;
   }
   @media (max-width: 1140px) {
