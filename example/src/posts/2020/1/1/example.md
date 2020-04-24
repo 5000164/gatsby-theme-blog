@@ -20,7 +20,7 @@ featuredImage: "../../../../images/2020/1/1/example-featured.jpg"
 - こんな
 - 感じ
 
-```
+```none
 コードは
 こんな
 感じ
