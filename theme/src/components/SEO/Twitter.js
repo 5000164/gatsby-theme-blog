@@ -1,7 +1,13 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-export default ({ cardType = "summary", username = null, title = null, description = null, image = null }) => (
+export default ({
+  cardType = "summary_large_image",
+  username = null,
+  title = null,
+  description = null,
+  image = null,
+}) => (
   <Helmet>
     <meta name="twitter:card" content={cardType} />
     {username && <meta name="twitter:creator" content={username} />}
