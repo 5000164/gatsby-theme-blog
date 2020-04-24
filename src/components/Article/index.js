@@ -154,7 +154,7 @@ const StyledArticle = styled.article`
   }
   figure {
     width: 1140px;
-    margin: 20px auto;
+    margin: 40px auto;
   }
   figcaption {
     width: 1140px;
@@ -203,7 +203,7 @@ const StyledArticle = styled.article`
   pre {
     display: flex;
     width: 1140px;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 0;
   }
   @media (max-width: 1140px) {
