@@ -30,7 +30,7 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
