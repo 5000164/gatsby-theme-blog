@@ -10,12 +10,13 @@ const SEO = ({ title, description, featuredImage, slug, article }) => (
     query={query}
     render={({
       site: {
-        siteMetadata: { siteUrl, image, twitterUsername },
+        siteMetadata: { lang, siteUrl, image, twitterUsername },
       },
     }) => {
       const seo = {
-        title: title,
-        description: description,
+        lang,
+        title,
+        description,
         image: featuredImage ? `${siteUrl}${featuredImage.childImageSharp.fluid.src}` : `${siteUrl}${image}`,
         url: `${siteUrl}${slug || "/"}`,
       }
@@ -23,6 +24,7 @@ const SEO = ({ title, description, featuredImage, slug, article }) => (
       return (
         <>
           <Helmet>
+            <html lang={seo.lang} />
             <meta charSet="utf-8" />
             <title>{seo.title}</title>
             <meta name="description" content={seo.description} />
@@ -45,6 +47,7 @@ const SEO = ({ title, description, featuredImage, slug, article }) => (
 export default SEO
 
 SEO.propTypes = {
+  lang: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   featuredImage: PropTypes.object,
@@ -53,6 +56,7 @@ SEO.propTypes = {
 }
 
 SEO.defaultProps = {
+  lang: null,
   title: null,
   description: null,
   featuredImage: null,
@@ -64,6 +68,7 @@ const query = graphql`
   query SEO {
     site {
       siteMetadata {
+        lang
         siteUrl
         image
         twitterUsername
