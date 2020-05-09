@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: serif;
     font-weight: lighter;
-    font-size: 62.5%;
+    font-size: ${props => (props.lang === "ja" ? "10px" : "12px")};
     font-kerning: normal; // フォントのカーニングを常に有効にする
     font-feature-settings: "palt"; // 自動カーニングさせる
     letter-spacing: 0.03rem; // 字間を調整
@@ -46,11 +46,11 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Layout = ({ children, location, data }) => {
-  const consent = data.site.siteMetadata.consent
+  const { lang, consent, trackingId, anonymize } = data.site.siteMetadata
 
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle lang={lang} />
       {children}
       <Footer />
       <CookieConsentWrapper>
@@ -65,10 +65,10 @@ const Layout = ({ children, location, data }) => {
           declineButtonClasses="declineButton"
           buttonClasses="button"
           onAccept={() => {
-            ReactGA.initialize(data.site.siteMetadata.trackingId)
+            ReactGA.initialize(trackingId)
             ReactGA.set({
               page: location.pathname,
-              anonymizeIp: data.site.siteMetadata.anonymize,
+              anonymizeIp: anonymize,
             })
             ReactGA.pageview(location.pathname)
           }}
@@ -132,6 +132,7 @@ export default props => (
       query {
         site {
           siteMetadata {
+            lang
             consent {
               text
               accept
@@ -153,6 +154,7 @@ Layout.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
+        lang: PropTypes.string.isRequired,
         consent: PropTypes.shape({
           text: PropTypes.string.isRequired,
           accept: PropTypes.string.isRequired,
