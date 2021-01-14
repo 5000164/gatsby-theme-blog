@@ -5,10 +5,7 @@ import moment from "moment"
 import Img from "gatsby-image"
 
 const Article = ({ data, slug, title, published, updated, content, featuredImage }) => {
-  const formatter = date =>
-    moment(date, "YYYY-MM-DD HH:mm:ss Z")
-      .local()
-      .format("MMMM Do, YYYY")
+  const formatter = (date) => moment(date, "YYYY-MM-DD HH:mm:ss Z").local().format("MMMM Do, YYYY")
   const historyLink = data.site.siteMetadata.repository + "/commits/master/src/posts" + slug.slice(0, -1) + ".md"
 
   return (
@@ -237,7 +234,7 @@ const StyledArticle = styled.article`
     padding: 12px 20px;
   }
 
-  .language-text {
+  p > code {
     padding: 0;
     color: hsl(235, 10%, 28%);
     background-color: hsl(0, 100%, 100%);
@@ -293,7 +290,7 @@ const StyledArticle = styled.article`
   }
 `
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -305,6 +302,6 @@ export default props => (
         }
       }
     `}
-    render={data => <Article data={data} {...props} />}
+    render={(data) => <Article data={data} {...props} />}
   />
 )
