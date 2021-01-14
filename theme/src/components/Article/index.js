@@ -150,14 +150,14 @@ const StyledArticle = styled.article`
       width: 75%;
     }
 
-    ul > li,
-    ol > li {
+    > ul > li,
+    > ol > li {
       margin-left: -20px;
     }
   }
 
-  ul p,
-  ol p {
+  > ul p,
+  > ol p {
     width: auto;
     margin-top: 0;
     margin-bottom: 0;
@@ -235,6 +235,47 @@ const StyledArticle = styled.article`
 
   pre > code {
     padding: 12px 20px;
+  }
+
+  .footnotes {
+    width: 600px;
+    margin: 120px auto;
+    padding: 0;
+  }
+
+  @media (max-width: 1140px) {
+    .footnotes {
+      width: 75%;
+    }
+  }
+
+  .footnotes > ol {
+    width: 100%;
+    padding-left: 20px;
+  }
+
+  @media (max-width: 1140px) {
+    .footnotes > ol > li {
+      margin-left: -20px;
+    }
+  }
+
+  .footnotes p {
+    display: inline;
+  }
+
+  .footnote-ref::before {
+    content: "[";
+  }
+
+  .footnote-ref::after {
+    content: "]";
+  }
+
+  hr {
+    height: 1px;
+    background: hsl(235, 10%, 80%);
+    border: 0;
   }
 
   iframe {
