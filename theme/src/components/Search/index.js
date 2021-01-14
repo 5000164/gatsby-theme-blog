@@ -89,6 +89,7 @@ const hits = css`
     list-style: none;
     padding: 0;
   }
+
   @media (max-width: 1140px) {
     ul {
       width: 75%;

@@ -93,11 +93,13 @@ const StyledArticle = styled.article`
     width: 600px;
     margin: 20px auto;
   }
+
   @media (max-width: 1140px) {
     p {
       width: 75%;
     }
   }
+
   h1 {
     width: 600px;
     margin: 120px auto 20px;
@@ -108,11 +110,13 @@ const StyledArticle = styled.article`
     line-height: 1.3;
     color: hsl(235, 10%, 24%);
   }
+
   @media (max-width: 1140px) {
     h1 {
       width: 75%;
     }
   }
+
   h2 {
     width: 600px;
     margin: 80px auto 20px;
@@ -122,73 +126,88 @@ const StyledArticle = styled.article`
     letter-spacing: -0.01rem;
     line-height: 1.3;
   }
+
   @media (max-width: 1140px) {
     h2 {
       width: 75%;
     }
   }
+
   h1 + h2 {
     margin-top: 20px;
   }
+
   > ul,
   > ol {
     width: 600px;
     margin: auto;
     padding-left: 20px;
   }
+
   @media (max-width: 1140px) {
     > ul,
     > ol {
       width: 75%;
     }
+
     ul > li,
     ol > li {
       margin-left: -20px;
     }
   }
+
   ul p,
   ol p {
     width: auto;
     margin-top: 0;
     margin-bottom: 0;
   }
+
   figure {
     width: 1140px;
     margin: 40px auto;
   }
+
   figcaption {
     width: 1140px;
     margin: 8px auto;
     text-align: center;
   }
+
   @media (max-width: 1140px) {
     figure {
       width: 100%;
     }
+
     figcaption {
       width: 100%;
     }
   }
+
   blockquote {
     width: 600px;
     margin: 20px auto;
   }
+
   @media (max-width: 1140px) {
     blockquote {
       width: 75%;
     }
   }
+
   blockquote > p {
     position: relative;
     width: 600px;
     padding-left: 20px;
   }
+
   @media (max-width: 1140px) {
     blockquote > p {
       width: 70%;
       padding-left: 5%;
     }
   }
+
   blockquote > p::before {
     content: "";
     display: block;
@@ -200,20 +219,24 @@ const StyledArticle = styled.article`
     background: #e3e4e6;
     border-radius: 8px;
   }
+
   pre {
     display: flex;
     width: 1140px;
     margin: 40px auto;
     padding: 0;
   }
+
   @media (max-width: 1140px) {
     pre {
       width: 100%;
     }
   }
+
   pre > code {
     padding: 12px 20px;
   }
+
   iframe {
     display: block;
     margin: 20px auto;

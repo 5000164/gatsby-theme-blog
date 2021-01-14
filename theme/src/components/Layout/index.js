@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased; // フォントにアンチエイリアスをかける (少し細く見える)
     -moz-osx-font-smoothing: grayscale;
   }
+
   body {
     width: 100%;
     height: 100%;
@@ -28,18 +29,22 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.55;
     color: hsl(235, 10%, 28%);
     background-color: hsl(0, 100%, 100%);
-    }
+  }
+
   @media (max-width: 1140px) {
     body {
       line-height: 1.9; // スマホでは行間を少し広くする
     }
   }
+
   a {
     color: hsl(235, 10%, 50%);
   }
+
   a:visited {
     color: hsl(235, 10%, 50%);
   }
+
   * {
     box-sizing: border-box;
   }
@@ -94,30 +99,36 @@ const CookieConsentWrapper = styled.div`
     background-color: hsl(0, 100%, 100%);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   }
+
   .content {
     width: 940px;
     margin: 20px 0;
   }
+
   @media (max-width: 1140px) {
     .content {
       width: 95%;
       margin: 20px 0 10px;
     }
   }
+
   .declineButton {
     width: 80px;
     margin: 20px 0 20px 20px;
   }
+
   @media (max-width: 1140px) {
     .declineButton {
       width: 50%;
       margin: 10px 0 20px;
     }
   }
+
   .button {
     width: 80px;
     margin: 20px 0 20px 20px;
   }
+
   @media (max-width: 1140px) {
     .button {
       width: 50%;
