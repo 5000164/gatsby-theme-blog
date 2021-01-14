@@ -3,12 +3,11 @@ const anonymize = true
 
 module.exports = {
   siteMetadata: {
-    lang: "en",
-    title: `5000164 is here`,
-    description: `This blog is written about my life include technology.`,
-    name: "菅原 浩",
-    profile:
-      "Web プログラマー。好きな言葉は「安定的に不安定」。オーストラリアで英語を勉強した後に、現在デンマークで幸せについて考えている。",
+    lang: "ja",
+    title: `title`,
+    description: `description`,
+    name: "name",
+    profile: "profile",
     consent: {
       text: "このウェブサイトでは Cookie を使用します。<a href='/privacy/'>詳細はこちら</a>",
       accept: "同意する",
