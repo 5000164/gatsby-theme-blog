@@ -239,6 +239,7 @@ const StyledArticle = styled.article`
     padding: 0;
     color: hsl(235, 10%, 28%);
     background-color: hsl(0, 100%, 100%);
+    overflow-wrap: break-word;
   }
 
   .footnotes {
