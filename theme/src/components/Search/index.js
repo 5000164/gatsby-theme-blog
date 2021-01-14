@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import algoliasearch from "algoliasearch/lite"
 import { connectStateResults, Hits, Index, InstantSearch, SearchBox } from "react-instantsearch-dom"
 import styled, { css } from "styled-components"
-import { Algolia } from "styled-icons/fa-brands/Algolia"
+import { Algolia } from "@styled-icons/fa-brands/Algolia"
 import PostHit from "./PostHit"
 
 export default class Search extends Component {
