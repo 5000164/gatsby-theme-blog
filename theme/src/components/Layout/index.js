@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: 0.03rem; // 字間を調整
     -webkit-font-smoothing: antialiased; // フォントにアンチエイリアスをかける (少し細く見える)
     -moz-osx-font-smoothing: grayscale;
+    overflow-wrap: break-word;
   }
 
   body {
