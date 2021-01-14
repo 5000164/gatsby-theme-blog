@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled from "styled-components"
-import { Rss } from "styled-icons/boxicons-regular/Rss"
+import { Rss } from "@styled-icons/boxicons-regular/Rss"
 import Search from "../Search"
 
 const Footer = ({ data }) => (

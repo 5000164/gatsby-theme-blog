@@ -24,6 +24,7 @@ const Title = styled.div`
   @media (max-width: 1140px) {
     width: 75%;
   }
+
   &::before,
   &::after {
     content: "";
@@ -31,9 +32,11 @@ const Title = styled.div`
     height: 1px;
     background: hsl(235, 10%, 80%);
   }
+
   &::before {
     margin-right: 1rem;
   }
+
   &::after {
     margin-left: 1rem;
   }

@@ -1,7 +1,7 @@
 import React from "react"
 import { connectSearchBox } from "react-instantsearch-dom"
 import styled, { css } from "styled-components"
-import { Search } from "styled-icons/fa-solid"
+import { Search } from "@styled-icons/fa-solid"
 
 export default connectSearchBox(({ refine, ...rest }) => (
   <Form onSubmit={e => e.preventDefault()}>
