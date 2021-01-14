@@ -237,6 +237,12 @@ const StyledArticle = styled.article`
     padding: 12px 20px;
   }
 
+  .language-text {
+    padding: 0;
+    color: hsl(235, 10%, 28%);
+    background-color: hsl(0, 100%, 100%);
+  }
+
   .footnotes {
     width: 600px;
     margin: 120px auto;
