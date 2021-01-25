@@ -54,7 +54,6 @@ const Subtitle = styled.div`
   width: 600px;
   margin: auto;
   font-size: 1.2rem;
-  color: hsl(235, 10%, 65%);
   @media (max-width: 1140px) {
     width: 75%;
   }

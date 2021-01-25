@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import moment from "moment"
+import { theme } from "../../../theme"
 
 const List = ({ posts }) => {
   const formatter = (date) => moment(date, "YYYY-MM-DD HH:mm:ss Z").local().format("MMMM Do, YYYY")
@@ -31,18 +32,20 @@ const StyledLink = styled((props) => <Link {...props} />)`
 const Title = styled.div`
   margin: 4px 0;
   font-size: 2rem;
-  color: hsl(235, 10%, 5%);
+  color: ${theme.color};
+
   :visited {
-    color: hsl(235, 10%, 5%);
+    color: ${theme.color};
   }
 `
 
 const Date = styled.div`
   margin: 4px 0;
   font-size: 1.2rem;
-  color: hsl(235, 10%, 5%);
+  color: ${theme.color};
+
   :visited {
-    color: hsl(235, 10%, 5%);
+    color: ${theme.color};
   }
 `
 
