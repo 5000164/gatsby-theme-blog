@@ -37,7 +37,7 @@ const StyledFooter = styled.footer`
   margin: 240px 0 20px;
 `
 
-const StyledTitle = styled(props => <Link {...props} />)`
+const StyledTitle = styled((props) => <Link {...props} />)`
   display: block;
   width: 600px;
   margin: auto;
@@ -89,7 +89,7 @@ const RSS = styled.a`
   }
 `
 
-const StyledRss = styled(props => <Rss {...props} />)`
+const StyledRss = styled((props) => <Rss {...props} />)`
   width: calc(1em + 4px);
 `
 
@@ -111,7 +111,7 @@ const Copyright = styled.div`
   }
 `
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -124,7 +124,7 @@ export default props => (
         }
       }
     `}
-    render={data => <Footer data={data} {...props} />}
+    render={(data) => <Footer data={data} {...props} />}
   />
 )
 

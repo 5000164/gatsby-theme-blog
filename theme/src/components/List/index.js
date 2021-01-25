@@ -4,10 +4,7 @@ import styled from "styled-components"
 import moment from "moment"
 
 const List = ({ posts }) => {
-  const formatter = date =>
-    moment(date, "YYYY-MM-DD HH:mm:ss Z")
-      .local()
-      .format("MMMM Do, YYYY")
+  const formatter = (date) => moment(date, "YYYY-MM-DD HH:mm:ss Z").local().format("MMMM Do, YYYY")
 
   return (
     <>
@@ -21,7 +18,7 @@ const List = ({ posts }) => {
   )
 }
 
-const StyledLink = styled(props => <Link {...props} />)`
+const StyledLink = styled((props) => <Link {...props} />)`
   display: block;
   width: 600px;
   margin: 80px auto;

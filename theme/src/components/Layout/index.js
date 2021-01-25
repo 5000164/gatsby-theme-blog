@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: serif;
     font-weight: lighter;
-    font-size: ${props => (props.lang === "ja" ? "10px" : "12px")};
+    font-size: ${(props) => (props.lang === "ja" ? "10px" : "12px")};
     font-kerning: normal; // フォントのカーニングを常に有効にする
     font-feature-settings: "palt"; // 自動カーニングさせる
     letter-spacing: 0.03rem; // 字間を調整
@@ -138,7 +138,7 @@ const CookieConsentWrapper = styled.div`
   }
 `
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -156,7 +156,7 @@ export default props => (
         }
       }
     `}
-    render={data => <Layout data={data} {...props} />}
+    render={(data) => <Layout data={data} {...props} />}
   />
 )
 
