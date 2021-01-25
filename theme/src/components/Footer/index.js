@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled from "styled-components"
-import { Rss } from "@styled-icons/boxicons-regular/Rss"
+import { Rss } from "styled-icons/boxicons-regular"
 import Search from "../Search"
 
 const Footer = ({ data }) => (
@@ -23,9 +23,9 @@ const Footer = ({ data }) => (
         <a href="https://twitter.com/5000164">Twitter</a>
       </li>
     </About>
-    <RSS href={data.site.siteMetadata.siteUrl + "/feed.xml"}>
+    <RssLink href={data.site.siteMetadata.siteUrl + "/feed.xml"}>
       <StyledRss />
-    </RSS>
+    </RssLink>
     <PrivacyPolicy>
       <Link to={"/privacy/"}>Privacy Policy</Link>
     </PrivacyPolicy>
@@ -78,7 +78,7 @@ const About = styled.ul`
   }
 `
 
-const RSS = styled.a`
+const RssLink = styled.a`
   display: block;
   width: 600px;
   margin: 8px auto;
@@ -88,7 +88,7 @@ const RSS = styled.a`
   }
 `
 
-const StyledRss = styled((props) => <Rss {...props} />)`
+const StyledRss = styled(Rss)`
   width: calc(1em + 4px);
 `
 

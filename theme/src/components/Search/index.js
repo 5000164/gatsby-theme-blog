@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import algoliasearch from "algoliasearch/lite"
 import { connectStateResults, Hits, Index, InstantSearch, SearchBox } from "react-instantsearch-dom"
 import styled, { css } from "styled-components"
-import { Algolia } from "@styled-icons/fa-brands/Algolia"
+import { Algolia } from "styled-icons/fa-brands"
 import PostHit from "./PostHit"
 
 export default class Search extends Component {
@@ -30,7 +30,7 @@ export default class Search extends Component {
       <InstantSearch indexName={index} searchClient={searchClient}>
         <Root>
           <SearchBox
-            onChange={e => this.setState({ query: e.target.value })}
+            onChange={(e) => this.setState({ query: e.target.value })}
             onReset={() => this.setState({ query: "" })}
           />
           <HitsWrapper show={this.state.query.length > 0}>
@@ -61,8 +61,8 @@ const HitsWrapper = styled.div`
   bottom: calc(100% + 0.5em);
   left: -200px;
   right: 0;
-  visibility: ${props => (props.show ? "visible" : "hidden")};
-  opacity: ${props => (props.show ? "1" : "0")};
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
+  opacity: ${(props) => (props.show ? "1" : "0")};
   z-index: 1;
   width: 600px;
   max-height: 500px;
@@ -73,7 +73,7 @@ const HitsWrapper = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  transition: ${props =>
+  transition: ${(props) =>
     props.show
       ? "visibility 0s ease-out 0s, opacity .25s ease-out 0s"
       : "visibility 0s ease-out .25s, opacity .25s ease-out 0s"};
@@ -102,7 +102,7 @@ const By = styled.div`
   text-align: right;
 `
 
-const StyledAlgolia = styled(props => <Algolia {...props} />)`
+const StyledAlgolia = styled(Algolia)`
   width: calc(1em + 6px);
   padding: 0 2px 0 4px;
 `
