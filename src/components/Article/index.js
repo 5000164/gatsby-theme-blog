@@ -3,6 +3,7 @@ import { graphql, Link, StaticQuery } from "gatsby"
 import styled from "styled-components"
 import moment from "moment"
 import Img from "gatsby-image"
+import { theme } from "../../../theme"
 
 const Article = ({ data, slug, title, published, updated, content, featuredImage }) => {
   const formatter = (date) => moment(date, "YYYY-MM-DD HH:mm:ss Z").local().format("MMMM Do, YYYY")
@@ -33,13 +34,9 @@ const Wrapper = styled.header`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  width: 1140px;
+  width: min(1140px, calc(100% - 32px));
   height: 476px;
-  margin: 8px auto 40px;
-  @media (max-width: 1140px) {
-    width: calc(100% - 16px);
-    margin: 8px 8px 40px;
-  }
+  margin: 16px auto;
 
   .gatsby-image-wrapper {
     top: 0;
@@ -47,26 +44,19 @@ const Wrapper = styled.header`
     bottom: 0;
     left: 0;
     z-index: -1;
-    width: 1140px;
-    height: 476px;
     margin: 0 auto;
-    @media (max-width: 1140px) {
-      width: 100%;
-      height: 100%;
-    }
   }
 `
 
 const StyledTitle = styled.div`
-  width: 1140px;
+  max-width: 1140px;
   margin: 8px auto;
-  padding: 8px 0 4px;
+  padding: 8px 16px;
   font-size: 4.8rem;
   text-align: center;
   letter-spacing: -0.1rem;
   line-height: 1.3;
-  color: hsl(235, 10%, 20%);
-  background-color: hsl(0, 100%, 100%);
+  background: ${theme.titleBackgroundColor};
   @media (max-width: 1140px) {
     width: 95%;
     font-size: 3.2rem;
@@ -74,12 +64,12 @@ const StyledTitle = styled.div`
 `
 
 const Date = styled.div`
-  width: 600px;
+  max-width: 1140px;
   margin: 8px auto;
-  padding: 4px 0;
+  padding: 8px 16px;
   font-size: 1.2rem;
   text-align: center;
-  background-color: hsl(0, 100%, 100%);
+  background: ${theme.titleBackgroundColor};
   @media (max-width: 1140px) {
     width: 95%;
   }
@@ -105,7 +95,6 @@ const StyledArticle = styled.article`
     font-size: 3.2rem;
     letter-spacing: -0.05rem;
     line-height: 1.3;
-    color: hsl(235, 10%, 24%);
   }
 
   @media (max-width: 1140px) {
@@ -237,8 +226,8 @@ const StyledArticle = styled.article`
   p > code,
   li > code {
     padding: 0;
-    color: hsl(235, 10%, 28%);
-    background-color: hsl(0, 100%, 100%);
+    color: ${theme.color};
+    background-color: ${theme.backgroundColor};
     overflow-wrap: break-word;
   }
 

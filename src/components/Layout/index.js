@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import styled, { createGlobalStyle } from "styled-components"
 import CookieConsent from "react-cookie-consent"
 import ReactGA from "react-ga"
+import { theme } from "../../../theme"
 import Footer from "../Footer"
 
 const GlobalStyle = createGlobalStyle`
@@ -11,9 +12,9 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     margin: 0;
-    font-family: serif;
+    font-family: sans-serif;
     font-weight: lighter;
-    font-size: ${props => (props.lang === "ja" ? "10px" : "12px")};
+    font-size: ${(props) => (props.lang === "ja" ? "10px" : "12px")};
     font-kerning: normal; // フォントのカーニングを常に有効にする
     font-feature-settings: "palt"; // 自動カーニングさせる
     letter-spacing: 0.03rem; // 字間を調整
@@ -28,8 +29,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1.8rem;
     line-height: 1.55;
-    color: hsl(235, 10%, 28%);
-    background-color: hsl(0, 100%, 100%);
+    color: ${theme.color};
+    background-color: ${theme.backgroundColor};
   }
 
   @media (max-width: 1140px) {
@@ -39,11 +40,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: hsl(235, 10%, 50%);
+    color: ${theme.linkColor};
   }
 
   a:visited {
-    color: hsl(235, 10%, 50%);
+    color: ${theme.linkColor};
   }
 
   * {
@@ -96,9 +97,8 @@ const CookieConsentWrapper = styled.div`
     left: 0;
     width: 100%;
     font-size: 1.2rem;
-    color: hsl(235, 10%, 28%);
-    background-color: hsl(0, 100%, 100%);
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: ${theme.backgroundColor};
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
   }
 
   .content {
@@ -138,7 +138,7 @@ const CookieConsentWrapper = styled.div`
   }
 `
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -156,7 +156,7 @@ export default props => (
         }
       }
     `}
-    render={data => <Layout data={data} {...props} />}
+    render={(data) => <Layout data={data} {...props} />}
   />
 )
 

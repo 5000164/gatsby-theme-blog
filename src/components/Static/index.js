@@ -15,7 +15,6 @@ const StyledTitle = styled.div`
   margin: 20px auto;
   font-size: 2rem;
   text-align: center;
-  color: hsl(235, 10%, 5%);
   @media (max-width: 1140px) {
     width: 95%;
   }
