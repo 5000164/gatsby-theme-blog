@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from "styled-components"
 import CookieConsent from "react-cookie-consent"
 import ReactGA from "react-ga"
 import { theme } from "../../../theme"
+import Header from "../Header"
 import Footer from "../Footer"
 
 const GlobalStyle = createGlobalStyle`
@@ -33,6 +34,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${theme.backgroundColor};
   }
 
+  #___gatsby, #gatsby-focus-wrapper {
+    height: 100%;
+  }
+
   @media (max-width: 1140px) {
     body {
       line-height: 1.9; // スマホでは行間を少し広くする
@@ -57,6 +62,7 @@ const Layout = ({ children, location, data }) => {
 
   return (
     <>
+      <Header />
       <GlobalStyle lang={lang} />
       {children}
       <Footer />

@@ -6,7 +6,7 @@ import SEO from "../components/SEO"
 import Article from "../components/Article"
 import Author from "../components/Author"
 
-export default ({ data, pageContext, location }) => {
+const articleTemplate = ({ data, pageContext, location }) => {
   const { markdownRemark } = data
   const { frontmatter, html, excerpt } = markdownRemark
   const { previous, next } = pageContext
@@ -72,11 +72,12 @@ const PostsWrapper = styled.div`
   margin: 80px 0;
 `
 
-const Post = styled(props => <Link {...props} />)`
+const Post = styled((props) => <Link {...props} />)`
   display: block;
   margin: 8px 0;
 `
 
+export default articleTemplate
 export const query = graphql`
   query($slug: String!) {
     site {

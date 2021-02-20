@@ -15,11 +15,11 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
         {featuredImage && <Img fluid={featuredImage.childImageSharp.fluid} style={{ position: "absolute" }} />}
         <StyledTitle>{title}</StyledTitle>
         <Date>
-          Published <Link to={slug}>{formatter(published)}</Link>
+          Published <StyledLink to={slug}>{formatter(published)}</StyledLink>
         </Date>
         {published !== updated && (
           <Date>
-            Updated <a href={historyLink}>{formatter(updated)}</a>
+            Updated <StyledA href={historyLink}>{formatter(updated)}</StyledA>
           </Date>
         )}
       </Wrapper>
@@ -34,9 +34,7 @@ const Wrapper = styled.header`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  width: min(1140px, calc(100% - 32px));
-  height: 476px;
-  margin: 16px auto;
+  height: 100%;
 
   .gatsby-image-wrapper {
     top: 0;
@@ -50,7 +48,7 @@ const Wrapper = styled.header`
 
 const StyledTitle = styled.div`
   max-width: 1140px;
-  margin: 8px auto;
+  margin: -120px auto 0;
   padding: 8px 16px;
   font-size: 4.8rem;
   text-align: center;
@@ -65,7 +63,7 @@ const StyledTitle = styled.div`
 
 const Date = styled.div`
   max-width: 1140px;
-  margin: 8px auto;
+  margin: 8px auto 0;
   padding: 8px 16px;
   font-size: 1.2rem;
   text-align: center;
@@ -75,7 +73,36 @@ const Date = styled.div`
   }
 `
 
+const StyledLink = styled(Link)`
+  color: ${theme.color};
+`
+
+const StyledA = styled.a`
+  color: ${theme.color};
+`
+
 const StyledArticle = styled.article`
+  position: relative;
+  margin-top: -80px;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    width: min(1140px, calc(100% - 32px));
+    height: 120px;
+    margin: -40px auto 0;
+    background: ${theme.backgroundColor};
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
   p {
     width: 600px;
     margin: 20px auto;
@@ -206,10 +233,14 @@ const StyledArticle = styled.article`
     border-radius: 8px;
   }
 
+  .gatsby-highlight {
+    margin: 40px auto;
+  }
+
   pre {
     display: flex;
     width: 1140px;
-    margin: 40px auto;
+    margin: 0 auto;
     padding: 0;
   }
 
