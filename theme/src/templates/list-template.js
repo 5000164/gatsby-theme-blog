@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import List from "../components/List"
 
-export default ({ data, pageContext, location }) => {
+const listTemplate = ({ data, pageContext, location }) => {
   const posts = data.allMarkdownRemark.edges
   const { currentPage, numPages } = pageContext
 
@@ -58,6 +58,7 @@ const Page = styled.li`
   text-align: center;
 `
 
+export default listTemplate
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
     site {

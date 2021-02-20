@@ -1,7 +1,7 @@
-import React from "react";
-import { Layout, SEO, Static } from "theme";
+import React from "react"
+import { Layout, SEO, Static } from "theme"
 
-export default ({ location }) => {
+const privacy = ({ location }) => {
   return (
     <Layout location={location}>
       <SEO
@@ -21,5 +21,7 @@ export default ({ location }) => {
         }
       />
     </Layout>
-  );
-};
+  )
+}
+
+export default privacy
