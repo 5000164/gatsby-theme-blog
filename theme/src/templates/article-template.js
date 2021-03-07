@@ -6,14 +6,14 @@ import SEO from "../components/SEO"
 import Article from "../components/Article"
 import Author from "../components/Author"
 
-const articleTemplate = ({ data, pageContext, location }) => {
+const articleTemplate = ({ data, pageContext }) => {
   const { markdownRemark } = data
   const { frontmatter, html, excerpt } = markdownRemark
   const { previous, next } = pageContext
   const recentPosts = data.allMarkdownRemark.edges
 
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title={frontmatter.title + " | " + data.site.siteMetadata.title}
         description={excerpt}

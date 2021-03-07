@@ -1,9 +1,7 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import styled, { createGlobalStyle } from "styled-components"
-import CookieConsent from "react-cookie-consent"
-import ReactGA from "react-ga"
+import { createGlobalStyle } from "styled-components"
 import { theme } from "../../../theme"
 import Header from "../Header"
 import Footer from "../Footer"
@@ -57,92 +55,19 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const Layout = ({ children, location, data }) => {
-  const { lang, consent, trackingId, anonymize } = data.site.siteMetadata
-
-  return (
-    <>
-      <Header />
-      <GlobalStyle lang={lang} />
-      {children}
-      <Footer />
-      <CookieConsentWrapper>
-        <CookieConsent
-          cookieName="gatsby-gdpr-google-analytics"
-          buttonText={consent.accept}
-          declineButtonText={consent.decline}
-          enableDeclineButton={true}
-          disableStyles={true}
-          containerClasses="container"
-          contentClasses="content"
-          declineButtonClasses="declineButton"
-          buttonClasses="button"
-          onAccept={() => {
-            ReactGA.initialize(trackingId)
-            ReactGA.set({
-              page: location.pathname,
-              anonymizeIp: anonymize,
-            })
-            ReactGA.pageview(location.pathname)
-          }}
-        >
-          <div dangerouslySetInnerHTML={{ __html: consent.text }} />
-        </CookieConsent>
-      </CookieConsentWrapper>
-    </>
-  )
-}
-
-const CookieConsentWrapper = styled.div`
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-size: 1.2rem;
-    background-color: ${theme.backgroundColor};
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
-  }
-
-  .content {
-    width: 940px;
-    margin: 20px 0;
-  }
-
-  @media (max-width: 1140px) {
-    .content {
-      width: 95%;
-      margin: 20px 0 10px;
-    }
-  }
-
-  .declineButton {
-    width: 80px;
-    margin: 20px 0 20px 20px;
-  }
-
-  @media (max-width: 1140px) {
-    .declineButton {
-      width: 50%;
-      margin: 10px 0 20px;
-    }
-  }
-
-  .button {
-    width: 80px;
-    margin: 20px 0 20px 20px;
-  }
-
-  @media (max-width: 1140px) {
-    .button {
-      width: 50%;
-      margin: 10px 0 20px;
-    }
-  }
-`
+const Layout = ({
+  children,
+  data: {
+    site: { siteMetadata: lang },
+  },
+}) => (
+  <>
+    <Header />
+    <GlobalStyle lang={lang} />
+    {children}
+    <Footer />
+  </>
+)
 
 export default (props) => (
   <StaticQuery
@@ -151,13 +76,6 @@ export default (props) => (
         site {
           siteMetadata {
             lang
-            consent {
-              text
-              accept
-              decline
-            }
-            trackingId
-            anonymize
           }
         }
       }
@@ -168,18 +86,10 @@ export default (props) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         lang: PropTypes.string.isRequired,
-        consent: PropTypes.shape({
-          text: PropTypes.string.isRequired,
-          accept: PropTypes.string.isRequired,
-          decline: PropTypes.string.isRequired,
-        }).isRequired,
-        trackingId: PropTypes.string.isRequired,
-        anonymize: PropTypes.bool.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,

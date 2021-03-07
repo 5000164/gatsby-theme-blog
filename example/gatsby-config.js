@@ -1,6 +1,3 @@
-const trackingId = `UA-51024599-1`
-const anonymize = true
-
 module.exports = {
   siteMetadata: {
     lang: `ja`,
@@ -8,18 +5,11 @@ module.exports = {
     description: `description`,
     name: `name`,
     profile: `profile`,
-    consent: {
-      text: `このウェブサイトでは Cookie を使用します。<a href='/privacy/'>詳細はこちら</a>`,
-      accept: `同意する`,
-      decline: `同意しない`,
-    },
     siteUrl: `https://blog.5000164.jp`,
     image: `/icon.png`,
     twitterUsername: `@5000164`,
     repository: `https://github.com/5000164/blog.5000164.jp`,
     profileUrl: `https://5000164.jp`,
-    trackingId,
-    anonymize,
   },
   plugins: [
     {
@@ -56,21 +46,6 @@ module.exports = {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://blog.5000164.jp`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-gdpr-cookies`,
-      options: {
-        googleAnalytics: {
-          trackingId,
-          cookieName: `gatsby-gdpr-google-analytics`,
-          anonymize,
-        },
-        facebookPixel: {
-          pixelId: ``,
-          cookieName: `gatsby-gdpr-facebook-pixel`,
-        },
-        environments: [`production`, `development`],
       },
     },
   ],
