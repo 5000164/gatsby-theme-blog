@@ -5,12 +5,12 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import List from "../components/List"
 
-const listTemplate = ({ data, pageContext, location }) => {
+const listTemplate = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges
   const { currentPage, numPages } = pageContext
 
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO
         title={data.site.siteMetadata.title}
         description={data.site.siteMetadata.description}
