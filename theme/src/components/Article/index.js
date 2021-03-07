@@ -13,11 +13,18 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
     <>
       <Wrapper>
         {featuredImage && (
-          <GatsbyImage
-            image={featuredImage.childImageSharp.gatsbyImageData}
-            alt="Featured Image"
-            style={{ position: "absolute" }}
-          />
+          <>
+            <GatsbyImage
+              image={featuredImage.childImageSharp.gatsbyImageData}
+              alt="Blurred Featured Image"
+              style={{ filter: "blur(80px)", opacity: ".5" }}
+            />
+            <GatsbyImage
+              image={featuredImage.childImageSharp.gatsbyImageData}
+              alt="Featured Image"
+              imgClassName="featured-image"
+            />
+          </>
         )}
         <StyledTitle>{title}</StyledTitle>
         <Date>
@@ -43,12 +50,20 @@ const Wrapper = styled.header`
   height: 100%;
 
   .gatsby-image-wrapper {
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: -1;
     margin: 0 auto;
+  }
+
+  .featured-image {
+    object-fit: contain !important;
+    @media (max-width: 1140px) {
+      object-fit: cover !important;
+    }
   }
 `
 
@@ -61,6 +76,7 @@ const StyledTitle = styled.div`
   letter-spacing: -0.1rem;
   line-height: 1.3;
   background: ${theme.titleBackgroundColor};
+  backdrop-filter: blur(2px);
   @media (max-width: 1140px) {
     width: 95%;
     font-size: 3.2rem;
