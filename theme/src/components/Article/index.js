@@ -13,7 +13,11 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
     <>
       <Wrapper>
         {featuredImage && (
-          <GatsbyImage image={featuredImage.childImageSharp.gatsbyImageData} style={{ position: "absolute" }} />
+          <GatsbyImage
+            image={featuredImage.childImageSharp.gatsbyImageData}
+            alt="Featured Image"
+            style={{ position: "absolute" }}
+          />
         )}
         <StyledTitle>{title}</StyledTitle>
         <Date>
