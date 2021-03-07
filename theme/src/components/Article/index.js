@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled from "styled-components"
 import moment from "moment"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from "../../../theme"
 
 const Article = ({ data, slug, title, published, updated, content, featuredImage }) => {
@@ -12,7 +12,9 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
   return (
     <>
       <Wrapper>
-        {featuredImage && <Img fluid={featuredImage.childImageSharp.fluid} style={{ position: "absolute" }} />}
+        {featuredImage && (
+          <GatsbyImage image={featuredImage.childImageSharp.gatsbyImageData} style={{ position: "absolute" }} />
+        )}
         <StyledTitle>{title}</StyledTitle>
         <Date>
           Published <StyledLink to={slug}>{formatter(published)}</StyledLink>
