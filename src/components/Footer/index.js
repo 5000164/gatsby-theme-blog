@@ -26,10 +26,7 @@ const Footer = ({ data }) => (
     <RssLink href={data.site.siteMetadata.siteUrl + "/feed.xml"}>
       <StyledRss />
     </RssLink>
-    <PrivacyPolicy>
-      <Link to={"/privacy/"}>Privacy Policy</Link>
-    </PrivacyPolicy>
-    <Copyright>Copyright © 2020 Hiroshi Sugawara. All rights reserved.</Copyright>
+    <Copyright>Copyright © 2021 Hiroshi Sugawara. All rights reserved.</Copyright>
   </StyledFooter>
 )
 
@@ -90,15 +87,6 @@ const RssLink = styled.a`
 
 const StyledRss = styled(Rss)`
   width: calc(1em + 4px);
-`
-
-const PrivacyPolicy = styled.div`
-  width: 600px;
-  margin: 8px auto;
-  padding: 0;
-  @media (max-width: 1140px) {
-    width: 75%;
-  }
 `
 
 const Copyright = styled.div`

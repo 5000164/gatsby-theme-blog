@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled from "styled-components"
 import moment from "moment"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from "../../../theme"
 
 const Article = ({ data, slug, title, published, updated, content, featuredImage }) => {
@@ -12,7 +12,20 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
   return (
     <>
       <Wrapper>
-        {featuredImage && <Img fluid={featuredImage.childImageSharp.fluid} style={{ position: "absolute" }} />}
+        {featuredImage && (
+          <>
+            <GatsbyImage
+              image={featuredImage.childImageSharp.gatsbyImageData}
+              alt="Blurred Featured Image"
+              style={{ filter: "blur(80px)", opacity: ".5" }}
+            />
+            <GatsbyImage
+              image={featuredImage.childImageSharp.gatsbyImageData}
+              alt="Featured Image"
+              imgClassName="featured-image"
+            />
+          </>
+        )}
         <StyledTitle>{title}</StyledTitle>
         <Date>
           Published <StyledLink to={slug}>{formatter(published)}</StyledLink>
@@ -37,12 +50,20 @@ const Wrapper = styled.header`
   height: 100%;
 
   .gatsby-image-wrapper {
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: -1;
     margin: 0 auto;
+  }
+
+  .featured-image {
+    object-fit: contain !important;
+    @media (max-width: 1140px) {
+      object-fit: cover !important;
+    }
   }
 `
 
@@ -55,6 +76,7 @@ const StyledTitle = styled.div`
   letter-spacing: -0.1rem;
   line-height: 1.3;
   background: ${theme.titleBackgroundColor};
+  backdrop-filter: blur(2px);
   @media (max-width: 1140px) {
     width: 95%;
     font-size: 3.2rem;
@@ -75,10 +97,18 @@ const Date = styled.div`
 
 const StyledLink = styled(Link)`
   color: ${theme.color};
+
+  :visited {
+    color: ${theme.color};
+  }
 `
 
 const StyledA = styled.a`
   color: ${theme.color};
+
+  :visited {
+    color: ${theme.color};
+  }
 `
 
 const StyledArticle = styled.article`
