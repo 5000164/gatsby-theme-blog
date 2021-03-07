@@ -26,7 +26,7 @@ const Footer = ({ data }) => (
     <RssLink href={data.site.siteMetadata.siteUrl + "/feed.xml"}>
       <StyledRss />
     </RssLink>
-    <Copyright>Copyright © 2020 Hiroshi Sugawara. All rights reserved.</Copyright>
+    <Copyright>Copyright © 2021 Hiroshi Sugawara. All rights reserved.</Copyright>
   </StyledFooter>
 )
 
