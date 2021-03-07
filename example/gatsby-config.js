@@ -12,10 +12,7 @@ module.exports = {
     profileUrl: `https://5000164.jp`,
   },
   plugins: [
-    {
-      resolve: `theme`,
-      options: {},
-    },
+    `theme`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

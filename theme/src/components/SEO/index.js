@@ -17,7 +17,7 @@ const SEO = ({ title, description, featuredImage, slug, article }) => (
         lang,
         title,
         description,
-        image: featuredImage ? `${siteUrl}${featuredImage.childImageSharp.fluid.src}` : `${siteUrl}${image}`,
+        image: featuredImage ? `${siteUrl}${featuredImage.childImageSharp.gatsbyImageData}` : `${siteUrl}${image}`,
         url: `${siteUrl}${slug || "/"}`,
       }
 
