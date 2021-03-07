@@ -97,10 +97,18 @@ const Date = styled.div`
 
 const StyledLink = styled(Link)`
   color: ${theme.color};
+
+  :visited {
+    color: ${theme.color};
+  }
 `
 
 const StyledA = styled.a`
   color: ${theme.color};
+
+  :visited {
+    color: ${theme.color};
+  }
 `
 
 const StyledArticle = styled.article`
