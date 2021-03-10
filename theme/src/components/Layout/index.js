@@ -6,6 +6,20 @@ import { theme } from "../../../theme"
 import Header from "../Header"
 import Footer from "../Footer"
 
+const Layout = ({
+  children,
+  data: {
+    site: { siteMetadata: lang },
+  },
+}) => (
+  <>
+    <Header />
+    <GlobalStyle lang={lang} />
+    {children}
+    <Footer />
+  </>
+)
+
 const GlobalStyle = createGlobalStyle`
   html {
     width: 100%;
@@ -54,20 +68,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `
-
-const Layout = ({
-  children,
-  data: {
-    site: { siteMetadata: lang },
-  },
-}) => (
-  <>
-    <Header />
-    <GlobalStyle lang={lang} />
-    {children}
-    <Footer />
-  </>
-)
 
 export default (props) => (
   <StaticQuery
