@@ -1,10 +1,26 @@
 import React from "react"
+import loadable from "@loadable/component"
 import { graphql, StaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from "styled-components"
 import { theme } from "../../../theme"
 import Header from "../Header"
-import Footer from "../Footer"
+
+const Footer = loadable(() => import("../Footer"))
+
+const Layout = ({
+  children,
+  data: {
+    site: { siteMetadata: lang },
+  },
+}) => (
+  <>
+    <Header />
+    <GlobalStyle lang={lang} />
+    {children}
+    <Footer />
+  </>
+)
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -54,20 +70,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `
-
-const Layout = ({
-  children,
-  data: {
-    site: { siteMetadata: lang },
-  },
-}) => (
-  <>
-    <Header />
-    <GlobalStyle lang={lang} />
-    {children}
-    <Footer />
-  </>
-)
 
 export default (props) => (
   <StaticQuery
