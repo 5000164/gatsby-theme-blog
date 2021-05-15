@@ -2,7 +2,6 @@ import React from "react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled from "styled-components"
 import moment from "moment"
-import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from "../../../theme"
 
 const Article = ({ data, slug, title, published, updated, content, featuredImage }) => {
@@ -11,88 +10,34 @@ const Article = ({ data, slug, title, published, updated, content, featuredImage
 
   return (
     <>
-      <Wrapper>
-        {featuredImage && (
-          <>
-            <GatsbyImage
-              image={featuredImage.childImageSharp.gatsbyImageData}
-              alt="Blurred Featured Image"
-              style={{ filter: "blur(80px)", opacity: ".5" }}
-            />
-            <GatsbyImage
-              image={featuredImage.childImageSharp.gatsbyImageData}
-              alt="Featured Image"
-              imgClassName="featured-image"
-            />
-          </>
-        )}
-        <StyledTitle>{title}</StyledTitle>
+      <StyledTitle>{title}</StyledTitle>
+      <Date>
+        <StyledLink to={slug}>{formatter(published)}</StyledLink>
+      </Date>
+      {published !== updated && (
         <Date>
-          Published <StyledLink to={slug}>{formatter(published)}</StyledLink>
+          <StyledA href={historyLink}>{formatter(updated)}</StyledA>
         </Date>
-        {published !== updated && (
-          <Date>
-            Updated <StyledA href={historyLink}>{formatter(updated)}</StyledA>
-          </Date>
-        )}
-      </Wrapper>
+      )}
       <StyledArticle dangerouslySetInnerHTML={{ __html: content }} />
     </>
   )
 }
 
-const Wrapper = styled.header`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-
-  .gatsby-image-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    margin: 0 auto;
-  }
-
-  .featured-image {
-    object-fit: contain !important;
-    @media (max-width: 1140px) {
-      object-fit: cover !important;
-    }
-  }
-`
-
 const StyledTitle = styled.div`
-  max-width: 1140px;
-  margin: -120px auto 0;
-  padding: 8px 16px;
-  font-size: 4.8rem;
-  text-align: center;
+  width: min(600px, 90%);
+  margin: 40px auto 0;
+  padding: 0;
+  font-size: 2rem;
   letter-spacing: -0.1rem;
   line-height: 1.3;
-  background: ${theme.titleBackgroundColor};
-  backdrop-filter: blur(2px);
-  @media (max-width: 1140px) {
-    width: 95%;
-    font-size: 3.2rem;
-  }
 `
 
 const Date = styled.div`
-  max-width: 1140px;
+  width: min(600px, 90%);
   margin: 8px auto 0;
-  padding: 8px 16px;
-  font-size: 1.2rem;
-  text-align: center;
-  background: ${theme.titleBackgroundColor};
-  @media (max-width: 1140px) {
-    width: 95%;
-  }
+  padding: 0;
+  font-size: 0.8rem;
 `
 
 const StyledLink = styled(Link)`
@@ -112,68 +57,33 @@ const StyledA = styled.a`
 `
 
 const StyledArticle = styled.article`
-  position: relative;
-  margin-top: -80px;
-
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    width: min(1140px, calc(100% - 32px));
-    height: 120px;
-    margin: -40px auto 0;
-    background: ${theme.backgroundColor};
-  }
-
   & > :first-child {
-    margin-top: 0;
+    margin-top: 40px;
   }
 
   p {
-    width: 600px;
-    margin: 20px auto;
-  }
-
-  @media (max-width: 1140px) {
-    p {
-      width: 75%;
-    }
+    width: min(600px, 90%);
+    margin: 8px auto 0;
   }
 
   h1 {
-    width: 600px;
-    margin: 120px auto 20px;
+    width: min(600px, 90%);
+    margin: 40px auto 0;
     padding: 0;
-    font-weight: lighter;
-    font-size: 3.2rem;
-    letter-spacing: -0.05rem;
+    font-weight: normal;
+    font-size: 2rem;
+    letter-spacing: -0.1rem;
     line-height: 1.3;
-  }
-
-  @media (max-width: 1140px) {
-    h1 {
-      width: 75%;
-    }
   }
 
   h2 {
-    width: 600px;
-    margin: 80px auto 20px;
+    width: min(600px, 90%);
+    margin: 40px auto 0;
     padding: 0;
-    font-weight: lighter;
-    font-size: 2.4rem;
-    letter-spacing: -0.01rem;
+    font-weight: normal;
+    font-size: 1.6rem;
+    letter-spacing: -0.1rem;
     line-height: 1.3;
-  }
-
-  @media (max-width: 1140px) {
-    h2 {
-      width: 75%;
-    }
   }
 
   h1 + h2 {
@@ -182,21 +92,9 @@ const StyledArticle = styled.article`
 
   > ul,
   > ol {
-    width: 600px;
-    margin: auto;
+    width: min(600px, 90%);
+    margin: 8px auto 0;
     padding-left: 20px;
-  }
-
-  @media (max-width: 1140px) {
-    > ul,
-    > ol {
-      width: 75%;
-    }
-
-    > ul > li,
-    > ol > li {
-      margin-left: -20px;
-    }
   }
 
   > ul p,
@@ -207,77 +105,46 @@ const StyledArticle = styled.article`
   }
 
   figure {
-    width: 1140px;
-    margin: 40px auto;
+    width: min(600px, 90%);
+    margin: 8px auto 0;
   }
 
   figcaption {
-    width: 1140px;
-    margin: 8px auto;
+    width: min(600px, 90%);
+    margin: 8px auto 0;
     text-align: center;
   }
 
-  @media (max-width: 1140px) {
-    figure {
-      width: 100%;
-    }
-
-    figcaption {
-      width: 100%;
-    }
-  }
-
   blockquote {
-    width: 600px;
-    margin: 20px auto;
-  }
+    margin: 0;
 
-  @media (max-width: 1140px) {
-    blockquote {
-      width: 75%;
+    & > p {
+      position: relative;
+      padding-left: 20px;
     }
-  }
 
-  blockquote > p {
-    position: relative;
-    width: 600px;
-    padding-left: 20px;
-  }
-
-  @media (max-width: 1140px) {
-    blockquote > p {
-      width: 70%;
-      padding-left: 5%;
+    & > p::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 4px;
+      width: 6px;
+      height: 100%;
+      background: #e3e4e6;
+      border-radius: 8px;
     }
-  }
-
-  blockquote > p::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: #e3e4e6;
-    border-radius: 8px;
   }
 
   .gatsby-highlight {
-    margin: 40px auto;
+    margin: 8px auto 0;
   }
 
   pre {
     display: flex;
-    width: 1140px;
+    width: min(600px, 90%);
     margin: 0 auto;
     padding: 0;
-  }
-
-  @media (max-width: 1140px) {
-    pre {
-      width: 100%;
-    }
   }
 
   pre > code {
@@ -293,26 +160,14 @@ const StyledArticle = styled.article`
   }
 
   .footnotes {
-    width: 600px;
-    margin: 120px auto;
+    width: min(600px, 90%);
+    margin: 40px auto 0;
     padding: 0;
-  }
-
-  @media (max-width: 1140px) {
-    .footnotes {
-      width: 75%;
-    }
   }
 
   .footnotes > ol {
     width: 100%;
     padding-left: 20px;
-  }
-
-  @media (max-width: 1140px) {
-    .footnotes > ol > li {
-      margin-left: -20px;
-    }
   }
 
   .footnotes p {

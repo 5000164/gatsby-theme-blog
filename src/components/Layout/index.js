@@ -1,12 +1,8 @@
 import React from "react"
-import loadable from "@loadable/component"
 import { graphql, StaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from "styled-components"
 import { theme } from "../../../theme"
-import Header from "../Header"
-
-const Footer = loadable(() => import("../Footer"))
 
 const Layout = ({
   children,
@@ -15,47 +11,28 @@ const Layout = ({
   },
 }) => (
   <>
-    <Header />
     <GlobalStyle lang={lang} />
     {children}
-    <Footer />
   </>
 )
 
 const GlobalStyle = createGlobalStyle`
   html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
     font-family: sans-serif;
-    font-weight: lighter;
-    font-size: ${(props) => (props.lang === "ja" ? "10px" : "12px")};
+    font-size: ${(props) => (props.lang === "ja" ? "16px" : "18px")};
     font-kerning: normal; // フォントのカーニングを常に有効にする
     font-feature-settings: "palt"; // 自動カーニングさせる
     letter-spacing: 0.03rem; // 字間を調整
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased; // フォントにアンチエイリアスをかける (少し細く見える)
     -moz-osx-font-smoothing: grayscale;
     overflow-wrap: break-word;
-  }
-
-  body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    font-size: 1.8rem;
-    line-height: 1.55;
     color: ${theme.color};
     background-color: ${theme.backgroundColor};
   }
 
-  #___gatsby, #gatsby-focus-wrapper {
-    height: 100%;
-  }
-
-  @media (max-width: 1140px) {
-    body {
-      line-height: 1.9; // スマホでは行間を少し広くする
-    }
+  body {
+    margin: 0;
   }
 
   a {

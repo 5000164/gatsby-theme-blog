@@ -1,85 +1,59 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
+import { theme } from "../../theme"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Article from "../components/Article"
-import Author from "../components/Author"
 
-const articleTemplate = ({ data, pageContext }) => {
-  const { markdownRemark } = data
-  const { frontmatter, html, excerpt } = markdownRemark
-  const { previous, next } = pageContext
-  const recentPosts = data.allMarkdownRemark.edges
+const articleTemplate = ({ data }) => {
+  const {
+    markdownRemark: {
+      html,
+      excerpt,
+      fields: { slug },
+      frontmatter: { title, published, updated },
+    },
+  } = data
 
   return (
     <Layout>
-      <SEO
-        title={frontmatter.title + " | " + data.site.siteMetadata.title}
-        description={excerpt}
-        featuredImage={frontmatter.featuredImage}
-        slug={markdownRemark.fields.slug}
-        article={true}
-      />
-      <Article
-        slug={markdownRemark.fields.slug}
-        title={frontmatter.title}
-        published={frontmatter.published}
-        updated={frontmatter.updated}
-        featuredImage={frontmatter.featuredImage}
-        content={html}
-      />
-      <Author />
-      <RelatedPosts>
-        {next && (
-          <PostsWrapper>
-            <div>Next Post</div>
-            <Post to={next.fields.slug}>
-              <div>{next.frontmatter.title}</div>
-            </Post>
-          </PostsWrapper>
-        )}
-        {previous && (
-          <PostsWrapper>
-            <div>Previous Post</div>
-            <Post to={previous.fields.slug}>
-              <div>{previous.frontmatter.title}</div>
-            </Post>
-          </PostsWrapper>
-        )}
-        <PostsWrapper>
-          <div>Recent Posts</div>
-          {recentPosts.map(({ node }) => (
-            <Post to={node.fields.slug} key={node.fields.slug}>
-              <div>{node.frontmatter.title}</div>
-            </Post>
-          ))}
-        </PostsWrapper>
-      </RelatedPosts>
+      <SEO title={title} description={excerpt} slug={slug} article={true} />
+      <Home to={"/"}>
+        <HomeIcon>
+          <path
+            fill={theme.backgroundColor}
+            stroke={theme.color}
+            stroke-width="2px"
+            d="
+            M 2,14
+            C 2,2 2,2 14,2
+            S 26,2 26,14
+              26,26 14,26
+              2,26 2,14
+          "
+          />
+        </HomeIcon>
+      </Home>
+      <Article slug={slug} title={title} published={published} updated={updated} content={html} />
     </Layout>
   )
 }
 
-const RelatedPosts = styled.div`
-  width: 600px;
-  margin: 240px auto;
-  @media (max-width: 1140px) {
-    width: 75%;
-  }
-`
-
-const PostsWrapper = styled.div`
-  margin: 80px 0;
-`
-
-const Post = styled((props) => <Link {...props} />)`
+const Home = styled(Link)`
   display: block;
-  margin: 8px 0;
+  width: min(600px, 90%);
+  margin: 16px auto 0;
+`
+
+const HomeIcon = styled.svg`
+  width: 28px;
+  height: 28px;
 `
 
 export default articleTemplate
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     site {
       siteMetadata {
         title
@@ -93,11 +67,6 @@ export const query = graphql`
         title
         published
         updated
-        featuredImage {
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
       }
       html
       excerpt(format: PLAIN, pruneLength: 300, truncate: true)

@@ -4,19 +4,25 @@ import styled from "styled-components"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import List from "../components/List"
+import Author from "../components/Author"
+import Search from "../components/Search"
 
 const listTemplate = ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges
+  const {
+    site: {
+      siteMetadata: { title, description },
+    },
+    allMarkdownRemark: { edges: posts },
+  } = data
   const { currentPage, numPages } = pageContext
 
   return (
     <Layout>
-      <SEO
-        title={data.site.siteMetadata.title}
-        description={data.site.siteMetadata.description}
-        slug={"/"}
-        article={false}
-      />
+      <SEO title={title} description={description} slug={"/"} article={false} />
+      <Author />
+      <SearchWrapper>
+        <Search />
+      </SearchWrapper>
       <List posts={posts} />
       <Pagination>
         {Array.from({ length: numPages }, (_, i) => {
@@ -39,28 +45,32 @@ const listTemplate = ({ data, pageContext }) => {
   )
 }
 
+const SearchWrapper = styled.div`
+  display: block;
+  width: min(600px, 90%);
+  margin: 16px auto 0;
+  text-align: center;
+`
+
 const Pagination = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
-  margin: 120px auto;
+  width: min(600px, 90%);
+  margin: 16px auto 0;
   padding: 0;
   list-style: none;
-  @media (max-width: 1140px) {
-    width: 75%;
-  }
 `
 
 const Page = styled.li`
-  width: 28px;
-  margin: 4px;
+  width: 60px;
+  margin: 8px 0 0;
   padding: 0;
   text-align: center;
 `
 
 export default listTemplate
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query ($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -76,9 +86,7 @@ export const query = graphql`
           frontmatter {
             title
             published
-            updated
           }
-          html
         }
       }
     }
