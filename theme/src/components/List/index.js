@@ -9,29 +9,33 @@ const List = ({ posts }) => {
 
   return (
     <>
-      {posts.map(({ node }) => (
-        <StyledLink to={node.fields.slug} key={node.fields.slug}>
-          <Title>{node.frontmatter.title}</Title>
-          <Date>{formatter(node.frontmatter.published)}</Date>
-        </StyledLink>
-      ))}
+      {posts.map(
+        ({
+          node: {
+            fields: { slug },
+            frontmatter: { title, published },
+          },
+        }) => (
+          <StyledLink to={slug} key={slug}>
+            <Title>{title}</Title>
+            <Date>{formatter(published)}</Date>
+          </StyledLink>
+        )
+      )}
     </>
   )
 }
 
 const StyledLink = styled((props) => <Link {...props} />)`
   display: block;
-  width: 600px;
+  width: min(600px, 90%);
   margin: 80px auto;
   text-decoration: none;
-  @media (max-width: 1140px) {
-    width: 95%;
-  }
 `
 
 const Title = styled.div`
-  margin: 4px 0;
-  font-size: 2rem;
+  margin: 8px 0 0;
+  font-size: 1rem;
   color: ${theme.color};
 
   :visited {
@@ -40,8 +44,8 @@ const Title = styled.div`
 `
 
 const Date = styled.div`
-  margin: 4px 0;
-  font-size: 1.2rem;
+  margin: 8px 0 0;
+  font-size: 0.8rem;
   color: ${theme.color};
 
   :visited {
