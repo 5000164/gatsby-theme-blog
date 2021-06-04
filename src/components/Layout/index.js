@@ -7,7 +7,9 @@ import { theme } from "../../../theme"
 const Layout = ({
   children,
   data: {
-    site: { siteMetadata: lang },
+    site: {
+      siteMetadata: { lang },
+    },
   },
 }) => (
   <>
