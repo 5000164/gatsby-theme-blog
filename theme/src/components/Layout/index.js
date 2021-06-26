@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
     font-size: ${(props) => (props.lang === "ja" ? "16px" : "18px")};
     font-kerning: normal; // フォントのカーニングを常に有効にする
-    font-feature-settings: "palt"; // 自動カーニングさせる
+    font-feature-settings: "pkna"; // 自動カーニングさせる
     letter-spacing: 0.03rem; // 字間を調整
     line-height: 1.55;
     -webkit-font-smoothing: antialiased; // フォントにアンチエイリアスをかける (少し細く見える)
