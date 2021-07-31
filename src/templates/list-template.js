@@ -56,7 +56,7 @@ const Pagination = styled.ul`
   display: flex;
   flex-wrap: wrap;
   width: min(600px, 90%);
-  margin: 16px auto 0;
+  margin: 16px auto 160px;
   padding: 0;
   list-style: none;
 `
