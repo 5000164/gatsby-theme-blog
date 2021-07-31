@@ -57,6 +57,8 @@ const StyledA = styled.a`
 `
 
 const StyledArticle = styled.article`
+  margin-bottom: 160px;
+
   & > :first-child {
     margin-top: 40px;
   }
