@@ -36,6 +36,7 @@ exports.createPages = ({ actions, graphql }) => {
           numPages,
           currentPage: i + 1,
         },
+        defer: true,
       })
     })
 
@@ -51,6 +52,7 @@ exports.createPages = ({ actions, graphql }) => {
           previous,
           next,
         },
+        defer: true,
       })
     })
   })
